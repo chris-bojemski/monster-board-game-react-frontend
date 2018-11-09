@@ -1,40 +1,42 @@
 import React, { Component } from 'react';
 import './App.css';
-import GameBoard from './components/GameBoard';
-import PlayerOneDiceContainer from './components/PlayerOneDiceContainer';
-import PlayerTwoDiceContainer from './components/PlayerTwoDiceContainer';
+import GameInstance from './components/GameInstance'
 
 class App extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      monsters: []
+      monsters: [],
+      attacks: [],
     }
   }
 
   monstersURL = 'http://localhost:4000/monsters'
-
-  setInitialMonsterState = monsters => {
-    this.setState({ monsters })
-  }
+  attacksURL = 'http://localhost:4000/attacks'
+  // monsterAttacksURL = 'http://localhost:4000/monster_attacks'
 
   componentDidMount() {
     fetch(this.monstersURL)
     .then(r=>r.json())
-    .then(j=>this.setInitialMonsterState(j))
+    .then(monsters=>this.setState({ monsters }))
+
+    fetch(this.attacksURL)
+    .then(r=>r.json())
+    .then(attacks=>this.setState({ attacks }))
   }
   
   render() {
     return (
-      <div className="App">
-        <div className="playArea">
-          <PlayerOneDiceContainer />
-          <div className="gameContainer">
-            <GameBoard />
-          </div>
-          <PlayerTwoDiceContainer />
-        </div>
-      </div>
+      <GameInstance />
+      // <div className="App">
+      //   <div className="playArea">
+      //     <PlayerOneDiceContainer />
+      //     <div className="gameContainer">
+      //       <GameBoard />
+      //     </div>
+      //     <PlayerTwoDiceContainer />
+      //   </div>
+      // </div>
     );
   }
 }
