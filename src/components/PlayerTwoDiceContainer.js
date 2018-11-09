@@ -25,7 +25,7 @@ class PlayerTwoDiceContainer extends React.Component {
           dotColor="rgb(251,251,251)"
           outline="true"
           outlineColor="rgb(102,0,0)"
-          dieSize="80"
+          dieSize="75"
         />
       )
     })
