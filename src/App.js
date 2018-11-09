@@ -6,7 +6,7 @@ import PlayerTwoDiceContainer from './components/PlayerTwoDiceContainer';
 
 class App extends Component {
   constructor(props) {
-    super(props) 
+    super(props)
     this.state = {
       monsters: []
     }
