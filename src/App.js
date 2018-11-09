@@ -4,7 +4,7 @@ import GameInstance from './components/GameInstance'
 
 class App extends Component {
   constructor(props) {
-    super(props) 
+    super(props)
     this.state = {
       monsters: null,
       attacks: null,
