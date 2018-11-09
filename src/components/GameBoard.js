@@ -23,9 +23,9 @@ class GameBoard extends Component {
 
   render() {
     return (
-      <div className="backgroundImage">
+      <div className="board">
         <ul id="hexGrid">
-            {this.renderBoard()}          
+            {this.renderBoard()}
         </ul>
       </div>
     )

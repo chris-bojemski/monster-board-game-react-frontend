@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDice from 'react-dice-complete';
 
-class DiceContainer extends React.Component {
+class PlayerOneDiceContainer extends React.Component {
 
   constructor() {
     super()
@@ -33,7 +33,7 @@ class DiceContainer extends React.Component {
 
   render() {
     return (
-      <div className="diceTray">
+      <div className="playerOneDiceTray">
         {this.renderDice()}
       </div>
     )
@@ -49,4 +49,4 @@ class DiceContainer extends React.Component {
 
 }
 
-export default DiceContainer;
+export default PlayerOneDiceContainer;
