@@ -3,8 +3,8 @@ import HexTile from './HexTile';
 
 class GameBoard extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       tileCount: 57,
@@ -16,7 +16,14 @@ class GameBoard extends Component {
   renderBoard = () => {
     const hexes = []
     for (let i = 1; i < this.state.tileCount + 1; i++) {
-      hexes.push(<HexTile key={i} id={i} image={this.state.groundTiles[0]} />)
+      hexes.push(
+        <HexTile 
+          key={i} 
+          id={i} 
+          image={this.state.groundTiles[0]} 
+          monsters={this.props.monsters}
+        />
+      )
     }
     return hexes
   }

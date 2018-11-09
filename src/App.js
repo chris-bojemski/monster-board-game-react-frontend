@@ -6,8 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props) 
     this.state = {
-      monsters: [],
-      attacks: [],
+      monsters: null,
+      attacks: null,
     }
   }
 
@@ -27,16 +27,10 @@ class App extends Component {
   
   render() {
     return (
-      <GameInstance />
-      // <div className="App">
-      //   <div className="playArea">
-      //     <PlayerOneDiceContainer />
-      //     <div className="gameContainer">
-      //       <GameBoard />
-      //     </div>
-      //     <PlayerTwoDiceContainer />
-      //   </div>
-      // </div>
+      <GameInstance 
+        monsters={this.state.monsters} 
+        attacks={this.state.attacks}
+      />
     );
   }
 }

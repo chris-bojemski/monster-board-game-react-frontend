@@ -8,7 +8,10 @@ const GameInstance = props => (
     <div className="playArea">
       <PlayerOneDiceContainer />
       <div className="gameContainer">
-        <GameBoard />
+        <GameBoard 
+          monsters={props.monsters} 
+          attacks={props.attacks} 
+        />
       </div>
       <PlayerTwoDiceContainer />
     </div>

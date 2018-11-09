@@ -26,9 +26,14 @@ class PlayerOneDiceContainer extends React.Component {
           outline="true"
           outlineColor="rgb(102,0,0)"
           dieSize="75"
+          onClick={this.recordEvent}
         />
       )
     })
+  }
+
+  recordEvent = event => {
+    console.log("Clicked")
   }
 
   render() {

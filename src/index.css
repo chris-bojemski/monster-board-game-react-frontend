@@ -118,7 +118,7 @@ body {
 }
 
 /*** HEX CONTENT **********************************************************************/
-.hex img {
+.tile-background {
   left: -100%;
   right: -100%;
   width: auto;
@@ -185,4 +185,13 @@ body {
   .hex:nth-child(19n+11){ /* first hexagon of even rows */
     margin-left:5%;  /* = width of .hex / 2  to indent even rows */
   }
+}
+
+.sprite {
+  left: -100%;
+  right: -100%;
+  transform: translateY(23%);
+  width: 70%;
+  height: 70%;
+  margin: 0 auto;
 }
