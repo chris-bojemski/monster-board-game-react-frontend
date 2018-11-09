@@ -82,7 +82,7 @@ body {
     text-align: center;
     color: #fff;
     overflow: hidden;
-    opacity: .95;
+    opacity: .92;
     /* outline: 1px solid black; */
     /* box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.6); */
     -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
