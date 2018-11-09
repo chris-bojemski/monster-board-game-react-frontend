@@ -10,7 +10,19 @@ class GameBoard extends Component {
       tileCount: 57,
       id: 0,
       groundTiles: ['https://i.imgur.com/FmZU5Wp.png'],
+      selectedMonster: 0,
+      fromTile: 0,
+      toTile: 1
     }
+  }
+
+  selectMonster = (selectedMonster, fromTile) => {
+    console.log(`monster ${selectedMonster} from tile ${fromTile}`)
+    this.setState({ selectedMonster, fromTile })
+  }
+
+  moveMonster = toTile => {
+    this.setState({ toTile })
   }
 
   renderBoard = () => {
@@ -21,7 +33,11 @@ class GameBoard extends Component {
           key={i} 
           id={i} 
           image={this.state.groundTiles[0]} 
-          monsters={this.props.monsters}
+          monsterId={ i === this.state.toTile && this.props.monsters ? this.props.monsters[0].id : null }
+          selectMonster={this.selectMonster}
+          selectedMonster={this.state.selectedMonster}
+          findMonster={this.props.findMonster}
+          moveMonster={this.moveMonster}
         />
       )
     }

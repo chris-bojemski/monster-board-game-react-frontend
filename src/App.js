@@ -24,12 +24,19 @@ class App extends Component {
     .then(r=>r.json())
     .then(attacks=>this.setState({ attacks }))
   }
+
+  findMonster = monsterId => {
+    return this.state.monsters.find( monster => {
+      return monster.id === monsterId
+    })
+  }
   
   render() {
     return (
       <GameInstance 
         monsters={this.state.monsters} 
         attacks={this.state.attacks}
+        findMonster={this.findMonster}
       />
     );
   }

@@ -11,6 +11,7 @@ const GameInstance = props => (
         <GameBoard 
           monsters={props.monsters} 
           attacks={props.attacks} 
+          findMonster={props.findMonster}
         />
       </div>
       <PlayerTwoDiceContainer />
