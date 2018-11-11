@@ -1,19 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import GameInstance from './components/GameInstance'
+import ViewButtons from './components/ViewButtons'
+import TeamSelector from './components/TeamSelector'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      panel: 'gameInstance',
       monsters: null,
       attacks: null,
+      team1: null,
+      team2: null,
+      assignments: null,
     }
   }
 
   monstersURL = 'http://localhost:4000/monsters'
   attacksURL = 'http://localhost:4000/attacks'
-  // monsterAttacksURL = 'http://localhost:4000/monster_attacks'
+  teamsURL = 'http://localhost:4000/teams'
+  teamAssignmentURL = 'http://localhost:4000/team_assignments'
 
   componentDidMount() {
     fetch(this.monstersURL)
@@ -23,6 +30,14 @@ class App extends Component {
     fetch(this.attacksURL)
     .then(r=>r.json())
     .then(attacks=>this.setState({ attacks }))
+
+    fetch(this.teamsURL)
+    .then(r=>r.json())
+    .then(teams=>this.setState({ teams }))
+
+    fetch(this.teamAssignmentURL)
+    .then(r=>r.json())
+    .then(assignments=>this.setState({ assignments }))
   }
 
   findMonster = monsterId => {
@@ -30,14 +45,29 @@ class App extends Component {
       return monster.id === monsterId
     })
   }
+
+  changePanel = panel => {
+    this.setState({ panel })
+  }
   
   render() {
+    const showGame = this.state.panel === 'gameInstance'
     return (
-      <GameInstance 
-        monsters={this.state.monsters} 
-        attacks={this.state.attacks}
-        findMonster={this.findMonster}
-      />
+      <Fragment>
+        {showGame ?  <GameInstance 
+            monsters={this.state.monsters} 
+            attacks={this.state.attacks}
+            findMonster={this.findMonster}
+          />
+        : <TeamSelector 
+            monsters={this.state.monsters}
+            attacks={this.state.attacks}
+            teams={this.state.teams}
+            assignments={this.state.assignments}
+            changePanel={this.changePanel}
+          />}
+        <ViewButtons changePanel={this.changePanel}/>
+      </Fragment>
     );
   }
 }

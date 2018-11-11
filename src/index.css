@@ -195,3 +195,15 @@ body {
   height: 70%;
   margin: 0 auto;
 }
+
+.team-selector {
+  display: flex;
+}
+
+.team-selector div {
+  padding: 1em;
+}
+
+.team-selector div ul {
+  list-style: none;
+}

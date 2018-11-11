@@ -23,7 +23,7 @@ class Monster {
   }
 
   setAttack = () => {
-    this.attack = allAttacks.find(id: this.main_attack_id)
+    this.attack = allAttacks.find( attack => attack.id === this.main_attack_id)
   }
 }
 
