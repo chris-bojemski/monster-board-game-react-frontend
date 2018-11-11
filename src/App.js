@@ -58,6 +58,8 @@ class App extends Component {
             monsters={this.state.monsters} 
             attacks={this.state.attacks}
             findMonster={this.findMonster}
+            team1={this.state.team1}
+            team2={this.state.team2}
           />
         : <TeamSelector 
             monsters={this.state.monsters}

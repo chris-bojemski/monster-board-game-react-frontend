@@ -13,6 +13,7 @@ class GameBoard extends Component {
       selectedMonster: 0,
       fromTile: 0,
       toTile: 1,
+      gameStarted: false,
       movement: [
         {1: [
           {1: [2, 11]},
@@ -446,6 +447,11 @@ class GameBoard extends Component {
     }
     return hexes
   }
+
+  startPositions = [
+    [1, 11, 20, 30, 39, 49],
+    [10, 19, 29, 38, 48, 57]
+  ]
 
   render() {
     return (

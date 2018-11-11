@@ -12,6 +12,8 @@ const GameInstance = props => (
           monsters={props.monsters} 
           attacks={props.attacks} 
           findMonster={props.findMonster}
+          team1={props.team1}
+          team2={props.team2}
         />
       </div>
       <PlayerTwoDiceContainer />
