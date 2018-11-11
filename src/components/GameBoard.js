@@ -22,7 +22,9 @@ class GameBoard extends Component {
   }
 
   moveMonster = toTile => {
-    this.setState({ toTile })
+    this.setState({ toTile }, () => {
+      this.setState({ fromTile: 0, selectedMonster: 0})
+    })
   }
 
   renderBoard = () => {
