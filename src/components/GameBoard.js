@@ -105,6 +105,7 @@ class GameBoard extends Component {
           id={i}
           image={this.state.groundTiles[0]}
           monsterId={ this.props.monsters && monsterHere ? monsterHere.id : null }
+          direction={ monsterHere && monsterHere.team === 1 ? 'right' : 'left' }
           selectMonster={this.selectMonster}
           selectedMonster={this.state.selectedMonster}
           findMonster={this.props.findMonster}
