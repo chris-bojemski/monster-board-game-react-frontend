@@ -69,7 +69,7 @@ class GameBoard extends Component {
 
     let newState = {}
     newState[stateName] = team
-    
+
     this.setState( newState , () => {
       this.setState({ fromTile: 0, selectedMonster: 0})
     })
@@ -110,6 +110,8 @@ class GameBoard extends Component {
           selectedMonster={this.state.selectedMonster}
           findMonster={this.props.findMonster}
           moveMonster={this.moveMonster}
+          hover={this.props.hover}
+          unhover={this.props.unhover}
         />
       )
     }
@@ -133,12 +135,14 @@ class GameBoard extends Component {
       monstersWithPositions2.push(monster)
     }
 
-    this.setState({ 
+    this.setState({
       gameStarted: true,
       team1Roster: monstersWithPositions1,
       team2Roster: monstersWithPositions2,
     })
   }
+
+
 
   render() {
     if (this.state.team1Roster && !this.state.gameStarted) {

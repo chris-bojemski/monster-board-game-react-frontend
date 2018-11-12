@@ -5,9 +5,10 @@ import PlayerTwoDiceContainer from './PlayerTwoDiceContainer';
 
 class GameInstance extends React.Component {
   constructor(props) {
-    super(props) 
+    super(props)
     this.state = {
       locked: 0,
+      hovered: 0,
     }
   }
 
@@ -21,27 +22,44 @@ class GameInstance extends React.Component {
   // 7. unlock other player’s controls
 
   // stage: check game -> roll turns -> action select -> action checks -< back to select/perform action -> turn end
-  
+
+  renderHoverCard = (monsterId) => {
+    this.setState({ hovered: monsterId })
+  }
+
+  unrenderHoverCard = () => {
+    this.setState({ hovered: 0 })
+  }
+
+  getBannerText = () => {
+    return this.state.hovered ? this.state.hovered : null
+  }
+
   render() {
     return (
       <div className="App">
         <div className="playArea">
-          <PlayerOneDiceContainer 
+          <PlayerOneDiceContainer
           />
           <div className="gameContainer">
-            <GameBoard 
-              monsters={this.props.monsters} 
-              attacks={this.props.attacks} 
+            <GameBoard
+              monsters={this.props.monsters}
+              attacks={this.props.attacks}
               findMonster={this.props.findMonster}
               team1={this.props.team1}
               team2={this.props.team2}
               team1Roster={this.props.team1Roster}
               team2Roster={this.props.team2Roster}
               findTeamMonsters={this.props.findTeamMonsters}
+              hover={this.renderHoverCard}
+              unhover={this.unrenderHoverCard}
             />
           </div>
-          <PlayerTwoDiceContainer 
-          />
+          <PlayerTwoDiceContainer />
+        </div>
+        <br />
+        <div className="hoverCard">
+          {this.getBannerText()}
         </div>
       </div>
     )

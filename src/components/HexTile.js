@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 const HexTile = (props) => {
 
@@ -18,6 +18,17 @@ const HexTile = (props) => {
     }
   }
 
+  const hoverCard = (event) => {
+    console.log("hello")
+    return (
+      <div className="hoverCard">
+        Hello!
+      </div>
+    )
+  }
+
+  // const renderCard = ()
+
   return (
     <React.Fragment>
       <li
@@ -34,11 +45,13 @@ const HexTile = (props) => {
             <h1>Placeholder</h1>
             {props.monsterId
               ?
-            <img
-              className={`sprite-${props.direction}`}
-              src={props.findMonster(props.monsterId).sprite_front}
-              alt={props.findMonster(props.monsterId).name}
-            />
+              <img
+                className={`sprite-${props.direction}`}
+                src={props.findMonster(props.monsterId).sprite_front}
+                alt={props.findMonster(props.monsterId).name}
+                onMouseEnter={() => props.hover(props.monsterId)}
+                onMouseLeave={props.unhover}
+              />
               :
             null}
             <p>Placeholder</p>
