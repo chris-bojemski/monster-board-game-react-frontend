@@ -35,7 +35,7 @@ const HexTile = (props) => {
             {props.monsterId
               ?
             <img
-              className="sprite-{props.direction}"
+              className={`sprite-${props.direction}`}
               src={props.findMonster(props.monsterId).sprite_front}
               alt={props.findMonster(props.monsterId).name}
             />
