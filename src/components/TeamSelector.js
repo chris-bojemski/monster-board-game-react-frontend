@@ -14,19 +14,22 @@ class TeamSelector extends React.Component {
       const monsters = this.props.findTeamMonsters(team.id)
       const listItems = monsters.map(monster => {
         return (
-          <li>
-            {monster.name}
-          </li>
+          <img src={monster.sprite_front} alt="" />
         )
       })
 
       return (
         <div>
-          <h3>{team.name}</h3>
-          <ul>
+          <div className="cardHeader">
+            <h3>{team.name}</h3>
+          </div>
+          <div className="card">
             {listItems}
-          </ul>
-          <button onClick={() => this.selectTeam(team.id)}>Select</button>
+            <br />
+            <div className="teamSelectButton">
+              <button className="selectButton" onClick={() => this.selectTeam(team.id)}>Select</button>
+            </div>
+          </div>
         </div>
       )
     })
@@ -51,8 +54,10 @@ class TeamSelector extends React.Component {
     }
     return (
       <div>
-        <h2>{header}, pick a team</h2>
-        <div className="team-selector">
+        <div className="selectScreenHeader">
+          <h2>{header}, Select Your Team!</h2>
+        </div>
+        <div className="content">
           {this.makeTeamLists()}
         </div>
       </div>

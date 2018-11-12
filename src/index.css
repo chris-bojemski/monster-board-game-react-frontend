@@ -74,6 +74,12 @@ body {
   /* display: block; */
 }
 
+.changeScreens{
+  padding-top: 50px;
+  margin: auto;
+  width: 14%;
+}
+
 .hex {
   position: relative;
   visibility:hidden;
@@ -190,9 +196,12 @@ body {
 .sprite {
   left: -100%;
   right: -100%;
-  transform: translateY(6%) translateX(2%);
+  transform: translateY(6%) translateX(2.5%);
   width: 90%;
   height: 90%;
   margin: 0 auto;
   z-index: 1000;
+  /* for flipping sprite */
+  /* -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
 }

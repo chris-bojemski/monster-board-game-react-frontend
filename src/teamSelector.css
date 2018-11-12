@@ -1,11 +1,64 @@
-.team-selector {
-  display: flex;
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400';
+
+.card{
+  min-height: 100px;
+  max-width: 576px;
+  padding: 15px;
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0px 10px 20px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  margin: auto;
+  background-color: #ECECEC;
+  /* width: 50%; */
 }
 
-.team-selector div {
-  padding: 1em;
+.cardHeader{
+  padding-top: 50px;
+  padding-bottom: 10px;
+  margin: auto;
+  width: 20%;
+  text-align: center;
 }
 
-.team-selector div ul {
-  list-style: none;
+.teamSelectButton{
+  width: 6%;
+  margin: auto;
+}
+
+.selectScreenHeader{
+  margin: auto;
+  width: 30%;
+  padding-left: 5%;
+}
+
+.selectButton{
+  width: 50px;
+}
+
+.firstinfo{
+  @extend %flex;
+  flex-direction: row;
+  z-index:2;
+  position: relative;
+  img{
+    border-radius: 50%;
+    width: 120px;
+  height: 120px;
+}
+.profileinfo{
+    padding: 0px 20px;
+    h1{ font-size: 1.8em;}
+    h3{ font-size: 1.2em;
+        color: $maincolor;
+        font-style: italic;
+    }
+    p.bio{
+      padding: 10px 0px;
+      color: #5A5A5A;
+      line-height: 1.2;
+      font-style: initial;
+    }
+  }
 }
