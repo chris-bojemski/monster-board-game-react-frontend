@@ -13,6 +13,8 @@ class App extends Component {
       attacks: null,
       team1: null,
       team2: null,
+      team1Roster: null,
+      team2Roster: null,
       assignments: null,
     }
   }
@@ -59,6 +61,17 @@ class App extends Component {
       return this.state.monsters.find( monster => monster.id === assignment.monster_id )
     })
   }
+
+  selectTeam = teamId => {
+    if (this.state.team1 === null) {
+      this.setState({ team1: teamId, team1Roster: this.findTeamMonsters(teamId) })
+
+    } else if (this.state.team2 === null) {
+      this.setState({ team2: teamId, team2Roster: this.findTeamMonsters(teamId) }, () => {
+        this.changePanel('gameInstance')
+      })
+    }
+  }
   
   render() {
     const showGame = this.state.panel === 'gameInstance'
@@ -70,6 +83,8 @@ class App extends Component {
             findMonster={this.findMonster}
             team1={this.state.team1}
             team2={this.state.team2}
+            team1Roster={this.state.team1Roster}
+            team2Roster={this.state.team2Roster}
             findTeamMonsters={this.findTeamMonsters}
           />
         : <TeamSelector 
@@ -79,6 +94,9 @@ class App extends Component {
             assignments={this.state.assignments}
             changePanel={this.changePanel}
             findTeamMonsters={this.findTeamMonsters}
+            team1={this.state.team1}
+            team2={this.state.team2}
+            selectTeam={this.selectTeam}
           />}
         <ViewButtons changePanel={this.changePanel}/>
       </Fragment>
