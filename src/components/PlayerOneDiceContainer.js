@@ -10,6 +10,9 @@ class PlayerOneDiceContainer extends React.Component {
       dices: [{id: 1, value: 0, type: "Turn"}, {id: 2, value: 0, type: "Attack"}, {id: 3, value: 0, type: "Move"}],
       resultType: "",
       resultValue: 0,
+      turn: 0,
+      move: 0,
+      attack: 0,
     }
 
     this.updateState()
@@ -70,6 +73,11 @@ class PlayerOneDiceContainer extends React.Component {
   }
 
   saveRoll = (event) => {
+    const kinds = ['Turn', 'Move', 'Attack']
+    const kind = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.className
+    if (kinds.includes(kind)) {
+
+    }
     this.setState({
       resultType: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.className
     })
