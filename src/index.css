@@ -75,7 +75,7 @@ body {
 }
 
 .changeScreens{
-  padding-top: 50px;
+  padding-top: 25px;
   margin: auto;
   width: 5%;
 }
@@ -193,7 +193,7 @@ body {
   }
 }
 
-.sprite {
+.sprite-left{
   left: -100%;
   right: -100%;
   transform: translateY(6%) translateX(2.5%);
@@ -204,4 +204,17 @@ body {
   /* for flipping sprite */
   /* -webkit-transform: scaleX(-1);
     transform: scaleX(-1); */
+}
+
+.sprite-right{
+  left: -100%;
+  right: -100%;
+  /* transform: translateY(-78%) translateX(2.5%); */
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  z-index: 1000;
+  /* for flipping sprite */
+  -webkit-transform: scaleX(-1);
+    transform: scaleX(-1) translateY(5%) translateX(1%);
 }
