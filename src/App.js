@@ -59,6 +59,16 @@ class App extends Component {
       return this.state.monsters.find( monster => monster.id === assignment.monster_id )
     })
   }
+
+  selectTeam = teamId => {
+    if (this.state.team1 === null) {
+      this.setState({ team1: teamId })
+    } else if (this.state.team2 === null) {
+      this.setState({ team2: teamId }, () => {
+        this.changePanel('gameInstance')
+      })
+    }
+  }
   
   render() {
     const showGame = this.state.panel === 'gameInstance'
@@ -79,6 +89,9 @@ class App extends Component {
             assignments={this.state.assignments}
             changePanel={this.changePanel}
             findTeamMonsters={this.findTeamMonsters}
+            team1={this.state.team1}
+            team2={this.state.team2}
+            selectTeam={this.selectTeam}
           />}
         <ViewButtons changePanel={this.changePanel}/>
       </Fragment>

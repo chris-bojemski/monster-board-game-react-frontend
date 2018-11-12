@@ -26,25 +26,15 @@ class TeamSelector extends React.Component {
           <ul>
             {listItems}
           </ul>
-          <button onClick={() => this.selectTeam(team.id)}>Select</button>
+          <button onClick={() => this.props.selectTeam(team.id)}>Select</button>
         </div>
       )
     })
   }
 
-  selectTeam = (teamId) => {
-    if (this.state.team1 === null) {
-      this.setState({ team1: teamId })
-    } else if (this.state.team2 === null) {
-      this.setState({ team2: teamId }, () => {
-        this.props.changePanel('gameInstance')
-      })
-    }
-  }
-
   render() {
     let header = ''
-    if (this.state.team1 === null) {
+    if (this.props.team1 === null) {
       header = "Player 1"
     } else {
       header = "Player 2"

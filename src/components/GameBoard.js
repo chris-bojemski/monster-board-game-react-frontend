@@ -18,8 +18,13 @@ class GameBoard extends Component {
     }
   }
 
+  startPositions = [
+    [1, 11, 20, 30, 39, 49],
+    [10, 19, 29, 38, 48, 57]
+  ]
+
   selectMonster = (selectedMonster, fromTile) => {
-    console.log(`monster ${selectedMonster} from tile ${fromTile}`)
+    // console.log(`monster ${selectedMonster} from tile ${fromTile}`)
     this.setState({ selectedMonster, fromTile })
   }
 
@@ -48,12 +53,17 @@ class GameBoard extends Component {
     return hexes
   }
 
-  startPositions = [
-    [1, 11, 20, 30, 39, 49],
-    [10, 19, 29, 38, 48, 57]
-  ]
+  startGame() {
+    this.state.team1.forEach( monster => {
+
+    })
+  }
 
   render() {
+    if (this.state.monsters && !this.state.gameStarted) {
+      this.startGame()
+    }
+
     return (
       <div className="board">
         <ul id="hexGrid">
