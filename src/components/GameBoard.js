@@ -140,6 +140,8 @@ class GameBoard extends Component {
       team1Roster: monstersWithPositions1,
       team2Roster: monstersWithPositions2,
     })
+
+    this.props.setInitialStage()
   }
 
 
