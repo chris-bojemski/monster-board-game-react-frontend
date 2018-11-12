@@ -57,7 +57,15 @@ class PlayerOneDiceContainer extends React.Component {
       <div className="playerOneDiceTray">
         <h3>Player 1</h3>
         <br />
-        {this.renderDice()}
+        <ReactDice
+          numDice={1}
+          rollDone={this.rollDoneCallback}
+          faceColor="rgb(153,0,0)"
+          dotColor="rgb(251,251,251)"
+          outline="true"
+          outlineColor="rgb(102,0,0)"
+          dieSize="75"
+        />
       </div>
     )
   }
@@ -67,9 +75,7 @@ class PlayerOneDiceContainer extends React.Component {
   }
 
   rollDoneCallback = (num) => {
-    this.setState({
-      resultValue: num
-    })
+    this.props.diceValueMultiplexer(1, num)
   }
 
   saveRoll = (event) => {

@@ -218,3 +218,8 @@ body {
   -webkit-transform: scaleX(-1);
     transform: scaleX(-1) translateY(5%) translateX(1%);
 }
+
+.banner {
+  background: black;
+  height: 100px;
+}
