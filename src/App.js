@@ -49,6 +49,16 @@ class App extends Component {
   changePanel = panel => {
     this.setState({ panel })
   }
+
+  findTeamMonsters = teamId => {
+    const team = this.state.teams.find( team => {
+      return team.id === teamId
+    })
+
+    return this.state.assignments.filter( assignment => assignment.team_id === team.id).map( assignment => {
+      return this.state.monsters.find( monster => monster.id === assignment.monster_id )
+    })
+  }
   
   render() {
     const showGame = this.state.panel === 'gameInstance'
@@ -60,6 +70,7 @@ class App extends Component {
             findMonster={this.findMonster}
             team1={this.state.team1}
             team2={this.state.team2}
+            findTeamMonsters={this.findTeamMonsters}
           />
         : <TeamSelector 
             monsters={this.state.monsters}
@@ -67,6 +78,7 @@ class App extends Component {
             teams={this.state.teams}
             assignments={this.state.assignments}
             changePanel={this.changePanel}
+            findTeamMonsters={this.findTeamMonsters}
           />}
         <ViewButtons changePanel={this.changePanel}/>
       </Fragment>

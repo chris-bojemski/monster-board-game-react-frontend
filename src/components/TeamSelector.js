@@ -11,17 +11,7 @@ class TeamSelector extends React.Component {
 
   makeTeamLists = () => {
     return this.props.teams.map( team => {
-      const monsterIds = []
-      this.props.assignments.forEach(assignment => {
-        if (assignment.team_id === team.id) {
-          monsterIds.push(assignment.monster_id)
-        }
-      })
-
-      const monsters = this.props.monsters.filter( monster => {
-        return monsterIds.includes(monster.id)
-      })
-
+      const monsters = this.props.findTeamMonsters(team.id)
       const listItems = monsters.map(monster => {
         return (
           <li>
