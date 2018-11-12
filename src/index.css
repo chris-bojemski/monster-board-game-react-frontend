@@ -190,20 +190,9 @@ body {
 .sprite {
   left: -100%;
   right: -100%;
-  transform: translateY(23%);
-  width: 70%;
-  height: 70%;
+  transform: translateY(6%) translateX(2%);
+  width: 90%;
+  height: 90%;
   margin: 0 auto;
-}
-
-.team-selector {
-  display: flex;
-}
-
-.team-selector div {
-  padding: 1em;
-}
-
-.team-selector div ul {
-  list-style: none;
+  z-index: 1000;
 }

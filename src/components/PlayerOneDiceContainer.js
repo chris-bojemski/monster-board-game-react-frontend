@@ -3,22 +3,36 @@ import ReactDice from 'react-dice-complete';
 
 class PlayerOneDiceContainer extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
-      dices: [{id: 1, value: 0, type: "Turn"}, {id: 2, value: 0, type: "Attack"}, {id: 3, value: 0, type: "Move"}]
+      dices: [{id: 1, value: 0, type: "Turn"}, {id: 2, value: 0, type: "Attack"}, {id: 3, value: 0, type: "Move"}],
+      resultType: "",
+      resultValue: 0,
     }
+
+    this.updateState()
+  }
+
+  updateState = () => {
+    this.state.dices.map( dice => {
+      if (dice.type === this.state.resultType) {
+        this.setState({
+          value: this.state.resultValue
+        })
+      }
+    })
   }
 
   renderDice = () => {
     return this.state.dices.map( dice => {
       return (
-        <div>
+        <div className={dice.type} onClick={this.saveRoll}>
           {dice.type}
           <ReactDice
             key={dice.type}
-            id={dice.id}
+            type={dice.type}
             value={dice.value}
             numDice={1}
             rollDone={this.rollDoneCallback}
@@ -35,6 +49,7 @@ class PlayerOneDiceContainer extends React.Component {
   }
 
   render() {
+    // console.log(this.state)
     return (
       <div className="playerOneDiceTray">
         <h3>Player 1</h3>
@@ -48,8 +63,16 @@ class PlayerOneDiceContainer extends React.Component {
     this.reactDice.rollAll()
   }
 
-  rollDoneCallback(num) {
-    console.log(`You rolled a ${num}`)
+  rollDoneCallback = (num) => {
+    this.setState({
+      resultValue: num
+    })
+  }
+
+  saveRoll = (event) => {
+    this.setState({
+      resultType: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.className
+    })
   }
 
 }

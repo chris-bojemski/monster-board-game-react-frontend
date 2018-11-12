@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react' 
+import React, { Fragment } from 'react'
 
 class TeamSelector extends React.Component {
   constructor(props) {
@@ -51,23 +51,23 @@ class TeamSelector extends React.Component {
       })
     }
   }
-  
+
   render() {
     let header = ''
     if (this.state.team1 === null) {
       header = "Player 1"
-    } else { 
-      header = "Player 2" 
+    } else {
+      header = "Player 2"
     }
     return (
-      <Fragment>
+      <div>
         <h2>{header}, pick a team</h2>
         <div className="team-selector">
           {this.makeTeamLists()}
         </div>
-      </Fragment>
+      </div>
     )
   }
 }
 
-export default TeamSelector 
+export default TeamSelector

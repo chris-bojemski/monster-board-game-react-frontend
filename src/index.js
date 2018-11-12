@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './dice.css';
+import './teamSelector.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

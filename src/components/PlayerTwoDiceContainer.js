@@ -7,14 +7,16 @@ class PlayerTwoDiceContainer extends React.Component {
     super()
 
     this.state = {
-      dices: [{id: 1, value: 0, type: "Turn"}, {id: 2, value: 0, type: "Attack"}, {id: 3, value: 0, type: "Move"}]
+      dices: [{id: 4, value: 0, type: "Turn"}, {id: 5, value: 0, type: "Attack"}, {id: 6, value: 0, type: "Move"}],
+      resultType: "",
+      resultValue: 0,
     }
   }
 
   renderDice = () => {
     return this.state.dices.map( dice => {
       return (
-        <div>
+        <div className={dice.type} onClick={this.saveRoll}>
           {dice.type}
           <ReactDice
             key={dice.type}
@@ -35,6 +37,7 @@ class PlayerTwoDiceContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="playerTwoDiceTray">
         <h3>Player 2</h3>
@@ -48,8 +51,16 @@ class PlayerTwoDiceContainer extends React.Component {
     this.reactDice.rollAll()
   }
 
-  rollDoneCallback(num) {
-    console.log(`You rolled a ${num}`)
+  rollDoneCallback = (num) => {
+    this.setState({
+      resultValue: num
+    })
+  }
+
+  saveRoll = (event) => {
+    this.setState({
+      resultType: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.className
+    })
   }
 
 }
