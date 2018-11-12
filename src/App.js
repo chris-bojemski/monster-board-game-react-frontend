@@ -13,6 +13,8 @@ class App extends Component {
       attacks: null,
       team1: null,
       team2: null,
+      team1Roster: null,
+      team2Roster: null,
       assignments: null,
     }
   }
@@ -62,9 +64,10 @@ class App extends Component {
 
   selectTeam = teamId => {
     if (this.state.team1 === null) {
-      this.setState({ team1: teamId })
+      this.setState({ team1: teamId, team1Roster: this.findTeamMonsters(teamId) })
+
     } else if (this.state.team2 === null) {
-      this.setState({ team2: teamId }, () => {
+      this.setState({ team2: teamId, team2Roster: this.findTeamMonsters(teamId) }, () => {
         this.changePanel('gameInstance')
       })
     }
@@ -80,6 +83,8 @@ class App extends Component {
             findMonster={this.findMonster}
             team1={this.state.team1}
             team2={this.state.team2}
+            team1Roster={this.state.team1Roster}
+            team2Roster={this.state.team2Roster}
             findTeamMonsters={this.findTeamMonsters}
           />
         : <TeamSelector 
