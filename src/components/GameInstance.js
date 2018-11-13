@@ -51,7 +51,7 @@ class GameInstance extends React.Component {
   }
 
   getBannerText = () => {
-    return this.state.hovered ? this.state.hovered : null
+    return this.state.hovered ? this.state.hovered : "View Game Stats Here!"
   }
 
   setInitialStage = () => {
@@ -69,7 +69,7 @@ class GameInstance extends React.Component {
     }
 
     if (this.state.stage === 'rollTurn') {
-      // check if both players have rolled 
+      // check if both players have rolled
       if (this.state.p1Turn && this.state.p2Turn) {
         let currentTurn = 0
         if (this.state.p1Turn > this.state.p2Turn) {
@@ -88,7 +88,7 @@ class GameInstance extends React.Component {
     }
 
     if (this.state.stage === 'rollAttack') {
-      
+
     }
   }
 
@@ -122,15 +122,16 @@ class GameInstance extends React.Component {
       }
     }
   }
-  
+
   render() {
     const stage = this.checkGameStage()
 
     return (
       <div className="App">
         <div className="playArea">
-          <PlayerOneDiceContainer 
+          <PlayerOneDiceContainer
             diceValueMultiplexer={this.diceValueMultiplexer}
+            gameTurn={this.state.stage}
           />
           <div className="gameContainer">
             <GameBoard
@@ -149,8 +150,9 @@ class GameInstance extends React.Component {
               advanceStage={this.advanceStage}
             />
           </div>
-          <PlayerTwoDiceContainer 
+          <PlayerTwoDiceContainer
             diceValueMultiplexer={this.diceValueMultiplexer}
+            gameTurn={this.state.stage}
           />
         </div>
         <br />
