@@ -147,6 +147,13 @@ class GameInstance extends React.Component {
               setInitialStage={this.setInitialStage}
               stage={this.state.stage}
               advanceStage={this.advanceStage}
+              p1Turn={this.state.p1Turn}
+              p1Move={this.state.p1Move}
+              p1Attack={this.state.p1Attack}
+              p2Turn={this.state.p2Turn}
+              p2Move={this.state.p2Move}
+              p2Attack={this.state.p2Attack}
+              currentTurn={this.state.currentTurn}
             />
           </div>
           <PlayerTwoDiceContainer 

@@ -3,6 +3,10 @@ import React, {Fragment} from 'react';
 const HexTile = (props) => {
 
   const decideClickAction = () => {
+    // If there's a selected monster already, and I click on 
+    // another monster on my team, switch the selection to
+    // the new one I clicked on.
+    
     // If there's a selected monster already, attack the one I clicked on.
     // Code not written yet.
 
@@ -27,13 +31,11 @@ const HexTile = (props) => {
     )
   }
 
-  // const renderCard = ()
-
   return (
     <React.Fragment>
       <li
         className="hex"
-        onClick={decideClickAction}
+        onClick={() => props.decideClickAction(props.id, props.monsterId ? props.monsterId : 0)}
       >
         <div className="hexIn">
           <a className="hexLink" href="#">

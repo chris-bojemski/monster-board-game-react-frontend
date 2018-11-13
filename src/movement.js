@@ -1,4 +1,4 @@
-const movement = [
+const possibleTiles = [
   {1: [
     {1: [2, 11]},
     {2: [3, 12, 20, 21]},
@@ -398,6 +398,6 @@ const movement = [
     {4: []},
     {5: []},
   ]},
-]
+];
 
-export default movement
+export default possibleTiles;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HexTile from './HexTile';
-import movement from '../movement';
+import possibleTiles from '../movement';
 
 class GameBoard extends Component {
 
@@ -26,7 +26,16 @@ class GameBoard extends Component {
   ]
 
   selectMonster = (selectedMonster, fromTile) => {
-    this.setState({ selectedMonster, fromTile })
+    console.log(`Selected ${selectedMonster} on tile ${fromTile}.`)
+    
+    if (selectedMonster === 0) {
+      return 
+    }
+
+    const monster = this.findMonsterInTeams(selectedMonster)
+    if (monster.team === this.props.currentTurn) {
+      this.setState({ selectedMonster, fromTile })
+    }
   }
 
   findMonsterInTeams = monsterId => {
@@ -45,7 +54,66 @@ class GameBoard extends Component {
     }
   }
 
+  findPossibleMoves = (monster, originTile) => {
+    const oneTile = possibleTiles[originTile - 1][originTile][0][1]
+    const twoTiles = possibleTiles[originTile - 1][originTile][1][2]
+    const threeTiles = possibleTiles[originTile - 1][originTile][2][3]
+    
+    if (monster.evo_level === 1) {
+      // always moves 3 blocks, irrespective of die roll.
+      return oneTile.concat(twoTiles).concat(threeTiles)
+    }
+
+    const roll = this.props.currentTurn === 1 && this.props.p1Roll ? this.props.p1Roll : this.props.currentTurn === 2 ? this.props.p2Roll : null
+
+    if (monster.evo_level === 2 && roll > 3) {
+      return oneTile.concat(twoTiles).concat(threeTiles)
+    } else if (monster.evo_level === 2 && roll < 4) {
+      return oneTile.concat(twoTiles)
+    }
+
+    if ((monster.evo_level === 3 || monster.evo_level === 6) && roll > 3) {
+      return oneTile.concat(twoTiles)
+    } else if (monster.evo_level === 2 && roll < 4) {
+      return oneTile
+    }
+  }
+
+  decideClickAction = (tileId, monsterId) => {
+    // If there's a selected monster already, and I click on 
+    // another monster on my team, switch the selection to
+    // the new one I clicked on.
+    
+    // If there's a selected monster already, attack the one I clicked on.
+    // Code not written yet.
+
+    // If there's no selected monster, select it.
+    if (!this.state.selectedMonster) {
+      this.selectMonster(monsterId ? monsterId : 0, tileId)
+    }
+
+    // If there's a monster selected and I clicked on a tile that doesn't
+    //    have a monster, move it to that tile.
+    if (this.state.selectedMonster && !monsterId) {
+      this.moveMonster(tileId)
+    }
+  }
+
+  withinMoveRange = toTile => {
+    const fromTile = this.state.fromTile
+    const monster = this.findMonsterInTeams(this.state.selectedMonster)
+    const possibleTiles = this.findPossibleMoves(monster, fromTile)
+    return possibleTiles.includes(toTile)
+  }
+
   moveMonster = toTile => {
+    if (this.props.stage !== 'move' || !this.withinMoveRange(toTile)) {
+      console.log("Tile not within range.")
+      return
+    }
+
+    console.log("Tile within range.")
+
     const newMonster = this.findMonsterInTeams(this.state.selectedMonster)
     newMonster.tile = toTile
 
@@ -73,6 +141,8 @@ class GameBoard extends Component {
     this.setState( newState , () => {
       this.setState({ fromTile: 0, selectedMonster: 0})
     })
+
+    this.props.advanceStage()
   }
 
   monsterOnTile = tileId => {
@@ -112,6 +182,7 @@ class GameBoard extends Component {
           moveMonster={this.moveMonster}
           hover={this.props.hover}
           unhover={this.props.unhover}
+          decideClickAction={this.decideClickAction}
         />
       )
     }
