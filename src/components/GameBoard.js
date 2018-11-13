@@ -26,15 +26,15 @@ class GameBoard extends Component {
   ]
 
   selectMonster = (selectedMonster, fromTile) => {
-    console.log(`Selected ${selectedMonster} on tile ${fromTile}.`)
-    
     if (selectedMonster === 0) {
       return 
     }
 
     const monster = this.findMonsterInTeams(selectedMonster)
     if (monster.team === this.props.currentTurn) {
-      this.setState({ selectedMonster, fromTile })
+      this.setState({ selectedMonster, fromTile }, () => {
+        // this.highlightBoard()
+      })
     }
   }
 
@@ -74,7 +74,7 @@ class GameBoard extends Component {
 
     if ((monster.evo_level === 3 || monster.evo_level === 6) && roll > 3) {
       return oneTile.concat(twoTiles)
-    } else if (monster.evo_level === 2 && roll < 4) {
+    } else if ((monster.evo_level === 3 || monster.evo_level === 6) && roll < 4) {
       return oneTile
     }
   }
@@ -108,11 +108,8 @@ class GameBoard extends Component {
 
   moveMonster = toTile => {
     if (this.props.stage !== 'move' || !this.withinMoveRange(toTile)) {
-      console.log("Tile not within range.")
       return
     }
-
-    console.log("Tile within range.")
 
     const newMonster = this.findMonsterInTeams(this.state.selectedMonster)
     newMonster.tile = toTile
@@ -215,11 +212,52 @@ class GameBoard extends Component {
     this.props.setInitialStage()
   }
 
+  withinOneTile = (originTile, targetTile) => {
+    const adjacentTiles = possibleTiles[originTile - 1][originTile][0][1]
+    return adjacentTiles.includes(targetTile) ? targetTile : 0
+  }
 
+  getAllSurroundingEnemies = teamId => {
+    let team, opposing = []
+
+    if (teamId === 1) {
+      team = this.state.team1Roster 
+      opposing = this.state.team2Roster
+    } else {
+      team = this.state.team2Roster 
+      opposing = this.state.team1Roster
+    }
+
+    let enemyTiles = []
+    team.forEach( monster => {
+      opposing.forEach( enemy => {
+        if (this.withinOneTile(monster.tile, enemy.tile)) { enemyTiles.push(enemy) }
+      })
+    })
+
+    enemyTiles = enemyTiles.filter( tileId => {
+      return tileId !== 0
+    })
+
+    return enemyTiles
+  }
+
+  attackOptionsExist = () => {
+    const player = this.state.currentTurn === 1 ? 1 : this.state.currentTurn === 2 ? 2 : null
+    const enemyTiles = this.getAllSurroundingEnemies(player)
+    if (enemyTiles.length > 0) {
+      return true 
+    }
+    return false
+  }
 
   render() {
     if (this.state.team1Roster && !this.state.gameStarted) {
       this.startGame()
+    }
+
+    if (this.props.stage === 'attack' && !this.attackOptionsExist()) {
+      this.props.advanceStage()
     }
 
     return (

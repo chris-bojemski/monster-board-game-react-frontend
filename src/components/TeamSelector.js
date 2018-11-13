@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 class TeamSelector extends React.Component {
   constructor(props) {
