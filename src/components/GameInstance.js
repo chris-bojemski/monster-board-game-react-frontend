@@ -43,7 +43,13 @@ class GameInstance extends React.Component {
   // stage: check game -> roll turns -> action select -> action checks -< back to select/perform action -> turn end
 
   renderHoverCard = (monsterId) => {
-    this.setState({ hovered: monsterId })
+    let monster = this.findMonsterInTeams(monsterId)
+    let hoveredState = `Name: ${this.capitalizeName(monster.name)}, Level: ${monster.evo_level}, HP: ${monster.hp}, Power: ${monster.power}`
+    this.setState({ hovered: hoveredState})
+  }
+
+  capitalizeName = (monsterName) => {
+    return monsterName.charAt(0).toUpperCase() + monsterName.slice(1)
   }
 
   unrenderHoverCard = () => {
@@ -52,6 +58,22 @@ class GameInstance extends React.Component {
 
   getBannerText = () => {
     return this.state.hovered ? this.state.hovered : "View Game Stats Here!"
+  }
+
+  findMonsterInTeams = monsterId => {
+    const team1Monster = this.props.team1Roster.find( monster => {
+      return monster.id === monsterId
+    })
+
+    const team2Monster = this.props.team2Roster.find( monster => {
+      return monster.id === monsterId
+    })
+
+    if (team1Monster) {
+      return team1Monster
+    } else if (team2Monster) {
+      return team2Monster
+    }
   }
 
   setInitialStage = () => {
