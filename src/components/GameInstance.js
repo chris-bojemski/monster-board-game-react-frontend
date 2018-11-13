@@ -28,7 +28,10 @@ class GameInstance extends React.Component {
     rollMove: 'rollAttack',
     rollAttack: 'move',
     move: 'attack',
-    attack: 'checkGameState'
+    attack: 'playerEquivalence',
+    // check if win condition
+    playerEquivalence: 'resetTurnValues',
+    resetTurnValues: 'rollTurn'
   }
 
   // 1. start game
@@ -87,8 +90,29 @@ class GameInstance extends React.Component {
       }
     }
 
-    if (this.state.stage === 'rollAttack') {
+    if (this.state.stage === 'playerEquivalence') {
+      // If player 2 hasn't gone yet...
+      if (this.state.currentTurn === 1 && this.state.p2Move === 0) {
+        this.setState({ currentTurn: 2, stage: 'rollMove' })
+      }
 
+      // If player 1 hasn't gone yet...
+      if (this.state.currentTurn === 2 && this.state.p1Move === 0) {
+        this.setState({ currentTurn: 1, stage: 'rollMove' })
+      }
+
+      if (this.state.p1Move && this.state.p2Move) {
+        console.log('Players are equivalent.')
+        this.advanceStage()
+      }
+    }
+
+    if (this.state.stage === 'resetTurnValues') {
+      let p1Turn, p2Turn, p1Move, p2Move, p1Attack, p2Attack, currentTurn
+      p1Turn = p2Turn = p1Move = p2Move = p1Attack = p2Attack = currentTurn = 0
+      this.setState({
+        p1Turn, p2Turn, p1Move, p2Move, p1Attack, p2Attack, currentTurn
+      }, () => this.advanceStage())
     }
   }
 
@@ -125,7 +149,7 @@ class GameInstance extends React.Component {
 
   render() {
     this.checkGameStage() 
-    
+
     return (
       <div className="App">
         <div className="playArea">
