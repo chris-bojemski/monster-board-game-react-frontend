@@ -124,8 +124,8 @@ class GameInstance extends React.Component {
   }
 
   render() {
-    const stage = this.checkGameStage()
-
+    this.checkGameStage() 
+    
     return (
       <div className="App">
         <div className="playArea">
