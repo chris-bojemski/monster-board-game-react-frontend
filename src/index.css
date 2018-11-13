@@ -25,6 +25,10 @@ code {
 body {
 }
 
+.gamePhase {
+  max-width: 120px;
+}
+
 #hexGrid {
   display: flex;
   flex-wrap: wrap;
