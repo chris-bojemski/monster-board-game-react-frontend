@@ -3,6 +3,9 @@ import './App.css';
 import GameInstance from './components/GameInstance'
 import ViewButtons from './components/ViewButtons'
 import TeamSelector from './components/TeamSelector'
+import VideoCover from 'react-video-cover'
+import BackgroundVideo from './components/BackgroundVideo'
+// require('./background.mp4')
 
 class App extends Component {
   constructor(props) {
@@ -78,29 +81,31 @@ class App extends Component {
     const showGame = this.state.team1 && this.state.team2 ? true : false
     return (
       <Fragment>
-
-        <img className="logo" src="https://i.imgur.com/IIxo52q.png" alt=""/>
-        {showGame ?  <GameInstance
-            monsters={this.state.monsters}
-            attacks={this.state.attacks}
-            findMonster={this.findMonster}
-            team1={this.state.team1}
-            team2={this.state.team2}
-            team1Roster={this.state.team1Roster}
-            team2Roster={this.state.team2Roster}
-            findTeamMonsters={this.findTeamMonsters}
-          />
-        : <TeamSelector
-            monsters={this.state.monsters}
-            attacks={this.state.attacks}
-            teams={this.state.teams}
-            assignments={this.state.assignments}
-            changePanel={this.changePanel}
-            findTeamMonsters={this.findTeamMonsters}
-            team1={this.state.team1}
-            team2={this.state.team2}
-            selectTeam={this.selectTeam}
-          />}
+      <div className="fullscreen-bg">
+        <BackgroundVideo />
+      </div>
+      <img className="logo" src="https://i.imgur.com/IIxo52q.png" alt=""/>
+      {showGame ?  <GameInstance
+          monsters={this.state.monsters}
+          attacks={this.state.attacks}
+          findMonster={this.findMonster}
+          team1={this.state.team1}
+          team2={this.state.team2}
+          team1Roster={this.state.team1Roster}
+          team2Roster={this.state.team2Roster}
+          findTeamMonsters={this.findTeamMonsters}
+        />
+      : <TeamSelector
+          monsters={this.state.monsters}
+          attacks={this.state.attacks}
+          teams={this.state.teams}
+          assignments={this.state.assignments}
+          changePanel={this.changePanel}
+          findTeamMonsters={this.findTeamMonsters}
+          team1={this.state.team1}
+          team2={this.state.team2}
+          selectTeam={this.selectTeam}
+        />}
       </Fragment>
     );
   }

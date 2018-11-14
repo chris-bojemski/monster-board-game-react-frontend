@@ -9,6 +9,10 @@ class TeamSelector extends React.Component {
     }
   }
 
+  capitalizeName = (monsterName) => {
+    return monsterName.charAt(0).toUpperCase() + monsterName.slice(1)
+  }
+
   makeTeamLists = () => {
     if (!this.props.monsters || !this.props.teams) { return null }
 
@@ -16,16 +20,19 @@ class TeamSelector extends React.Component {
       const monsters = this.props.findTeamMonsters(team.id)
       const listItems = monsters.map( monster => {
         return (
-          <img src={monster.sprite_front} alt="" />
+          <div className="teamCard">
+            <img src={monster.sprite_front} alt="" />
+            <p>{this.capitalizeName(monster.name)}</p>
+          </div>
         )
       })
 
       return (
         <div>
           <div className="cardHeader">
-            <h3>{team.name}</h3>
           </div>
           <div className="card">
+            <h3>{team.name}</h3>
             {listItems}
             <br />
             <div className="teamSelectButton">
@@ -47,8 +54,10 @@ class TeamSelector extends React.Component {
     return (
       <div>
         <div className="selectScreenHeader">
-          <h2>{header}, Select Your Team!</h2>
+          <h1>{header}, Select Your Team!</h1>
         </div>
+        <br />
+        <br />
         <div className="content">
           {this.makeTeamLists()}
         </div>
