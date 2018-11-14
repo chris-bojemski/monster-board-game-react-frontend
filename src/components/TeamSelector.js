@@ -22,7 +22,7 @@ class TeamSelector extends React.Component {
         return (
           <div className="teamCard">
             <img src={monster.sprite_front} alt="" />
-            <p>{this.capitalizeName(monster.name)}</p>
+            <h2>{this.capitalizeName(monster.name)}</h2>
           </div>
         )
       })
@@ -32,7 +32,7 @@ class TeamSelector extends React.Component {
           <div className="cardHeader">
           </div>
           <div className="card" onClick={() => this.props.selectTeam(team.id)}>
-            <h3>{team.name}</h3>
+            <h2>{team.name}</h2>
             {listItems}
             <br />
           </div>
@@ -49,18 +49,20 @@ class TeamSelector extends React.Component {
       header = "Player 2"
     }
     return (
-      <div>
-        <div className="selectScreenHeader">
+      <React.Fragment>
+        <br />
+        <div>
+          <div className="selectScreenHeader">
+            <h1>{header}, Select Your Team!</h1>
+          </div>
           <br />
-          <h1>{header}, Select Your Team!</h1>
+          <br />
+          <br />
+          <div className="content">
+            {this.makeTeamLists()}
+          </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <div className="content">
-          {this.makeTeamLists()}
-        </div>
-      </div>
+      </React.Fragment>
     )
   }
 }

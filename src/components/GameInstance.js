@@ -167,7 +167,7 @@ class GameInstance extends React.Component {
   }
 
   render() {
-    this.checkGameStage() 
+    this.checkGameStage()
 
     return (
       <div className="App">
@@ -207,7 +207,7 @@ class GameInstance extends React.Component {
         </div>
         <br />
         <div className="hoverCard">
-          {this.getBannerText()}
+          <h2>{this.getBannerText()}</h2>
         </div>
       </div>
     )
