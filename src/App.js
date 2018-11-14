@@ -72,13 +72,14 @@ class App extends Component {
       })
     }
   }
-  
+
   render() {
     const showGame = this.state.panel === 'gameInstance'
     return (
       <Fragment>
-        {showGame ?  <GameInstance 
-            monsters={this.state.monsters} 
+        <img className="logo" src="https://i.imgur.com/IIxo52q.png" alt=""/>
+        {showGame ?  <GameInstance
+            monsters={this.state.monsters}
             attacks={this.state.attacks}
             findMonster={this.findMonster}
             team1={this.state.team1}
@@ -87,7 +88,7 @@ class App extends Component {
             team2Roster={this.state.team2Roster}
             findTeamMonsters={this.findTeamMonsters}
           />
-        : <TeamSelector 
+        : <TeamSelector
             monsters={this.state.monsters}
             attacks={this.state.attacks}
             teams={this.state.teams}
@@ -98,10 +99,12 @@ class App extends Component {
             team2={this.state.team2}
             selectTeam={this.selectTeam}
           />}
-        <ViewButtons changePanel={this.changePanel}/>
       </Fragment>
     );
   }
 }
+
+// removed
+// <ViewButtons changePanel={this.changePanel}/>
 
 export default App;
