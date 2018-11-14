@@ -78,10 +78,28 @@ class GameBoard extends Component {
     }
   }
 
+  onCurrentTeam = monsterId => {
+    let team = []
+    if (this.props.currentTurn === 1) {
+      team = this.state.team1Roster
+    } else if (this.props.currentTurn === 2) {
+      team = this.state.team2Roster
+    }
+
+    const monster = team.find( monster => {
+      return monster.id === monsterId
+    })
+
+    return monster ? true : false 
+  }
+
   decideClickAction = (tileId, monsterId) => {
     // If there's a selected monster already, and I click on 
     // another monster on my team, switch the selection to
     // the new one I clicked on.
+    if (monsterId && this.state.selectedMonster && this.onCurrentTeam(monsterId)) {
+      this.selectMonster(monsterId, tileId)
+    }
     
     // If there's a selected monster already, attack the one I clicked on.
     // Code not written yet.
