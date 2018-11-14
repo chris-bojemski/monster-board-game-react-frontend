@@ -124,7 +124,6 @@ class GameInstance extends React.Component {
       }
 
       if (this.state.p1Move && this.state.p2Move) {
-        console.log('Players are equivalent.')
         this.advanceStage()
       }
     }
@@ -139,7 +138,6 @@ class GameInstance extends React.Component {
   }
 
   diceValueMultiplexer = (playerId, diceValue) => {
-    console.log(`The value ${diceValue} was submitted by Player ${playerId} during the ${this.state.stage} stage.`)
     if (this.state.stage === 'rollTurn') {
       if (playerId === 1) {
         this.setState({ p1Turn: diceValue })
