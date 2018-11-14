@@ -131,7 +131,32 @@ class GameBoard extends Component {
 
     const obj = {rosterName: team}
 
-    this.setState(obj, this.props.advanceStage())
+    this.setState(obj)
+  }
+  
+  cleanBoard = () => {
+    const dead = []
+    this.state.team1Roster.forEach( monster => {
+      if (monster.hp <= 0) {
+        dead.push(monster.id)
+      }
+    })
+
+    this.state.team2Roster.forEach( monster => {
+      if (monster.hp <= 0) {
+        dead.push(monster.id)
+      }
+    })
+
+    const team1Roster = this.state.team1Roster.filter( monster => {
+      return !dead.includes(monster.id)
+    })
+
+    const team2Roster = this.state.team2Roster.filter( monster => {
+      return !dead.includes(monster.id)
+    })
+
+    this.setState({ team1Roster, team2Roster })
   }
 
   decideClickAction = (tileId, monsterId) => {
@@ -147,6 +172,7 @@ class GameBoard extends Component {
       const valid = this.attackValid(this.state.selectedMonster, monsterId)
       if (valid) {
         this.executeAttack(this.state.selectedMonster, monsterId)
+        this.props.advanceStage()
       }
     }
 
@@ -314,12 +340,34 @@ class GameBoard extends Component {
     return false
   }
 
+  checkWin = () => {
+    if (this.state.team1Roster.length === 0 || this.state.team2Roster.length === 0) {
+      return true
+    }
+
+    return false
+  }
+
   render() {
     if (this.state.team1Roster && !this.state.gameStarted) {
       this.startGame()
     }
 
     if (this.props.stage === 'attack' && !this.attackOptionsExist()) {
+      this.props.advanceStage()
+    }
+
+    if (this.props.stage === 'cleanBoard') {
+      this.cleanBoard()
+      this.props.advanceStage()
+    }
+
+    if (this.props.stage === 'checkWin') {
+      if (this.checkWin()) {
+        console.log('PLAYER WINS')
+        return 
+      }
+
       this.props.advanceStage()
     }
 

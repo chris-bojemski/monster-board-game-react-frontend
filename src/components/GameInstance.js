@@ -28,8 +28,9 @@ class GameInstance extends React.Component {
     rollMove: 'rollAttack',
     rollAttack: 'move',
     move: 'attack',
-    attack: 'playerEquivalence',
-    // check if win condition
+    attack: 'cleanBoard',
+    cleanBoard: 'checkWin',
+    checkWin: 'playerEquivalence',
     playerEquivalence: 'resetTurnValues',
     resetTurnValues: 'checkGameState'
   }
@@ -166,6 +167,10 @@ class GameInstance extends React.Component {
     }
   }
 
+  setStage = stage => {
+    this.setState({ stage })
+  }
+
   render() {
     this.checkGameStage()
 
@@ -198,6 +203,7 @@ class GameInstance extends React.Component {
               p2Move={this.state.p2Move}
               p2Attack={this.state.p2Attack}
               currentTurn={this.state.currentTurn}
+              setStage={this.setStage}
             />
           </div>
           <PlayerTwoDiceContainer
