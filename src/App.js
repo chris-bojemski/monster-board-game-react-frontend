@@ -78,11 +78,7 @@ class App extends Component {
     const showGame = this.state.team1 && this.state.team2 ? true : false
     return (
       <Fragment>
-        <div class="fullscreen-bg">
-          <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
-              <source src="video/background.webm" type="video/mov" />
-          </video>
-        </div>
+
         <img className="logo" src="https://i.imgur.com/IIxo52q.png" alt=""/>
         {showGame ?  <GameInstance
             monsters={this.state.monsters}
@@ -109,6 +105,16 @@ class App extends Component {
     );
   }
 }
+
+// <video className="fullscreen-bg__video" poster="./background_image.png" src="background.mp4" type="video/mp4" loop muted controls>
+// </video>
+
+// <div className="fullscreen-bg">
+//   <video className="fullscreen-bg__video" loop autoPlay>
+//     <source src="./background.mp4" type="video/mp4" />
+//     Your browser does not support the video tag.
+//   </video>
+// </div>
 
 // removed
 // <ViewButtons changePanel={this.changePanel}/>

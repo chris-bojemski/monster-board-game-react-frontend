@@ -7,6 +7,7 @@
     "react-dice-complete": "^1.0.2",
     "react-dom": "^16.6.1",
     "react-scripts": "2.1.1",
+    "react-video-cover": "^1.2.0",
     "threejs-dice": "^1.0.3"
   },
   "scripts": {
