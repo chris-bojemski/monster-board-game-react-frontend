@@ -31,7 +31,7 @@ class GameInstance extends React.Component {
     attack: 'playerEquivalence',
     // check if win condition
     playerEquivalence: 'resetTurnValues',
-    resetTurnValues: 'rollTurn'
+    resetTurnValues: 'checkGameState'
   }
 
   // 1. start game
@@ -102,7 +102,6 @@ class GameInstance extends React.Component {
         } else if (this.state.p1Turn < this.state.p2Turn) {
           currentTurn = 2
         } else if (this.state.p1Turn === this.state.p2Turn) {
-          // if you rolled the same, reroll
           this.setState({ p1Turn: 0, p2Turn: 0 })
           return
         }
@@ -124,7 +123,6 @@ class GameInstance extends React.Component {
       }
 
       if (this.state.p1Move && this.state.p2Move) {
-        console.log('Players are equivalent.')
         this.advanceStage()
       }
     }
@@ -139,7 +137,6 @@ class GameInstance extends React.Component {
   }
 
   diceValueMultiplexer = (playerId, diceValue) => {
-    console.log(`The value ${diceValue} was submitted by Player ${playerId} during the ${this.state.stage} stage.`)
     if (this.state.stage === 'rollTurn') {
       if (playerId === 1) {
         this.setState({ p1Turn: diceValue })

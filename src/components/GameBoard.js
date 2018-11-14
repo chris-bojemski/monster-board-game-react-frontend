@@ -60,11 +60,10 @@ class GameBoard extends Component {
     const threeTiles = possibleTiles[originTile - 1][originTile][2][3]
     
     if (monster.evo_level === 1) {
-      // always moves 3 blocks, irrespective of die roll.
       return oneTile.concat(twoTiles).concat(threeTiles)
     }
 
-    const roll = this.props.currentTurn === 1 && this.props.p1Roll ? this.props.p1Roll : this.props.currentTurn === 2 ? this.props.p2Roll : null
+    const roll = this.props.currentTurn === 1 && this.props.p1Move ? this.props.p1Move : this.props.currentTurn === 2 ? this.props.p2Move : null
 
     if (monster.evo_level === 2 && roll > 3) {
       return oneTile.concat(twoTiles).concat(threeTiles)
