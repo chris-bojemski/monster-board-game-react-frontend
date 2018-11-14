@@ -78,6 +78,11 @@ class App extends Component {
     const showGame = this.state.team1 && this.state.team2 ? true : false
     return (
       <Fragment>
+        <div class="fullscreen-bg">
+          <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
+              <source src="video/background.webm" type="video/mov" />
+          </video>
+        </div>
         <img className="logo" src="https://i.imgur.com/IIxo52q.png" alt=""/>
         {showGame ?  <GameInstance
             monsters={this.state.monsters}
