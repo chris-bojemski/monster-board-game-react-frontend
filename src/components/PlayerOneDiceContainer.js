@@ -31,7 +31,7 @@ class PlayerOneDiceContainer extends React.Component {
   renderDice = () => {
     return this.state.dices.map( dice => {
       return (
-        <div className={dice.type} onClick={this.saveRoll}>
+        <div className={dice.type} >
           {dice.type}
           <ReactDice
             key={dice.type}
@@ -51,31 +51,10 @@ class PlayerOneDiceContainer extends React.Component {
     })
   }
 
-  showGamePhase = () => {
-    // console.log(this.props.gameTurn)
-    let gamePhase = this.props.gameTurn
-    if (gamePhase === "rollTurn") {
-      return "Roll for Turn Order!"
-    } else if (gamePhase === "rollMove") {
-      return "Roll for Movement!"
-    } else if (gamePhase === "rollAttack") {
-      return "Roll for Attack!"
-    } else if (gamePhase === "move") {
-      return "Move a Pokemon!"
-    } else if (gamePhase === "attack") {
-      return "Attack a Pokemon!"
-    }
-  }
-
   render() {
-    // console.log(this.state)
     return (
       <div className="playerOneDiceTray">
         <h2 className="diceHeader">Player 1</h2>
-        <br />
-        <div className="gamePhase">
-          <h3>{this.showGamePhase()}</h3>
-        </div>
         <br />
         <ReactDice
           key="playerOneDiceTray"
@@ -91,23 +70,8 @@ class PlayerOneDiceContainer extends React.Component {
     )
   }
 
-  rollAll() {
-    this.reactDice.rollAll()
-  }
-
   rollDoneCallback = (num) => {
     this.props.diceValueMultiplexer(1, num)
-  }
-
-  saveRoll = (event) => {
-    const kinds = ['Turn', 'Move', 'Attack']
-    const kind = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.className
-    if (kinds.includes(kind)) {
-
-    }
-    this.setState({
-      resultType: event.target.parentElement.parentElement.parentElement.parentElement.parentElement.className
-    })
   }
 
 }

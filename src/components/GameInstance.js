@@ -49,7 +49,7 @@ class GameInstance extends React.Component {
   renderHoverCard = (monsterId) => {
     let monster = this.findMonsterInTeams(monsterId)
     let hoveredState = `Name: ${this.capitalizeName(monster.name)}, Level: ${monster.evo_level}, HP: ${monster.hp}, Power: ${monster.power}`
-    this.setState({ hovered: hoveredState})
+    this.setState({ hovered: hoveredState })
   }
 
   capitalizeName = (monsterName) => {
@@ -60,8 +60,35 @@ class GameInstance extends React.Component {
     this.setState({ hovered: 0 })
   }
 
+  getTurnInstructions = () => {
+    const turn = this.state.currentTurn
+    const player = turn === 1 ? "Player 1, " : turn === 2 ? "Player 2, " : ''
+    if (!this.state.p1Turn || !this.state.p2Turn) {
+      return "Roll to see who goes first."
+    }
+
+    const phase = this.state.stage
+    if (phase === 'rollMove') {
+      return `${player}roll to see how far a Pokémon can move.`
+    }
+
+    if (phase === 'rollAttack') {
+      return `${player}roll to see how hard your attack will hit.`
+    }
+
+    if (phase === 'move') {
+      return `${player}move a monster.`
+    }
+
+    if (phase === 'attack') {
+      return `${player}ATTACK!.`
+    }
+
+    return ''
+  }
+
   getBannerText = () => {
-    return this.state.hovered ? this.state.hovered : "View Game Stats Here!"
+    return this.state.hovered ? this.state.hovered : this.getTurnInstructions()
   }
 
   findMonsterInTeams = monsterId => {

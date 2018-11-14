@@ -36,31 +36,11 @@ class PlayerTwoDiceContainer extends React.Component {
     })
   }
 
-  showGamePhase = () => {
-    // console.log(this.props.gameTurn)
-    let gamePhase = this.props.gameTurn
-    if (gamePhase === "rollTurn") {
-      return "Roll for Turn Order!"
-    } else if (gamePhase === "rollMove") {
-      return "Roll for Movement!"
-    } else if (gamePhase === "rollAttack") {
-      return "Roll for Attack!"
-    } else if (gamePhase === "move") {
-      return "Move a Pokemon!"
-    } else if (gamePhase === "attack") {
-      return "Attack a Pokemon!"
-    }
-  }
-
   render() {
     // console.log(this.state)
     return (
       <div className="playerTwoDiceTray">
         <h2 className="diceHeader">Player 2</h2>
-        <br />
-        <div className="gamePhase">
-          <h3>{this.showGamePhase()}</h3>
-        </div>
         <br />
         <ReactDice
           key="playerTwoDiceTray"
