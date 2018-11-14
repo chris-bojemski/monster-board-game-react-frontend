@@ -31,13 +31,10 @@ class TeamSelector extends React.Component {
         <div>
           <div className="cardHeader">
           </div>
-          <div className="card">
+          <div className="card" onClick={() => this.props.selectTeam(team.id)}>
             <h3>{team.name}</h3>
             {listItems}
             <br />
-            <div className="teamSelectButton">
-              <button className="selectButton" onClick={() => this.props.selectTeam(team.id)}>Select</button>
-            </div>
           </div>
         </div>
       )
@@ -54,8 +51,10 @@ class TeamSelector extends React.Component {
     return (
       <div>
         <div className="selectScreenHeader">
+          <br />
           <h1>{header}, Select Your Team!</h1>
         </div>
+        <br />
         <br />
         <br />
         <div className="content">
