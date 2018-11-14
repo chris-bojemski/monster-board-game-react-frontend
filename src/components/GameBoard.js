@@ -10,7 +10,26 @@ class GameBoard extends Component {
     this.state = {
       tileCount: 57,
       id: 0,
-      groundTiles: ['https://i.imgur.com/FmZU5Wp.png'],
+      groundTiles: [
+        'https://i.imgur.com/bq89X0b.jpg', 'https://i.imgur.com/ZcMpVxD.jpg',
+        'https://i.imgur.com/Dq9uhFl.jpg',
+        'https://i.imgur.com/fwcDwSX.jpg',
+        'https://i.imgur.com/wgV8O4l.jpg',
+        'https://i.imgur.com/PiSnWKy.jpg',
+        'https://i.imgur.com/wWjYvwS.jpg',
+        'https://i.imgur.com/C3TCpyP.jpg',
+        'https://i.imgur.com/S0fkCJK.jpg',
+        'https://i.imgur.com/g9uf9XC.jpg',
+        'https://i.imgur.com/VSjayqA.jpg',
+        'https://i.imgur.com/zIh6qT1.jpg',
+        'https://i.imgur.com/nkCPkUZ.jpg',
+        'https://i.imgur.com/Npd4jL6.jpg',
+        'https://i.imgur.com/kFA8UI9.jpg',
+        'https://i.imgur.com/5G0oiK1.jpg',
+        'https://i.imgur.com/FFPv9ig.jpg',
+        'https://i.imgur.com/gGEBhhd.jpg',
+        'https://i.imgur.com/JsDCJFb.jpg',
+      ],
       selectedMonster: 0,
       fromTile: 0,
       toTile: 0,
@@ -233,7 +252,7 @@ class GameBoard extends Component {
         <HexTile
           key={i}
           id={i}
-          image={this.state.groundTiles[0]}
+          image={this.state.groundTiles[Math.floor(Math.random() * this.state.groundTiles.length)]}
           monsterId={ this.props.monsters && monsterHere ? monsterHere.id : null }
           direction={ monsterHere && monsterHere.team === 1 ? 'right' : 'left' }
           selectMonster={this.selectMonster}
