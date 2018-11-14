@@ -50,7 +50,6 @@ class TeamSelector extends React.Component {
     }
     return (
       <React.Fragment>
-        <br />
         <div>
           <div className="selectScreenHeader">
             <h1>{header}, Select Your Team!</h1>

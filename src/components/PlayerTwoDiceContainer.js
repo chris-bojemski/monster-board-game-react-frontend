@@ -56,9 +56,11 @@ class PlayerTwoDiceContainer extends React.Component {
     // console.log(this.state)
     return (
       <div className="playerTwoDiceTray">
-        <h3 className="diceHeader">Player 2</h3>
+        <h2 className="diceHeader">Player 2</h2>
         <br />
-        <div className="gamePhase">{this.showGamePhase()}</div>
+        <div className="gamePhase">
+          <h3>{this.showGamePhase()}</h3>
+        </div>
         <br />
         <ReactDice
           key="playerTwoDiceTray"
