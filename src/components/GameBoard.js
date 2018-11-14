@@ -27,7 +27,7 @@ class GameBoard extends Component {
 
   selectMonster = (selectedMonster, fromTile) => {
     if (selectedMonster === 0) {
-      return 
+      return
     }
 
     const monster = this.findMonsterInTeams(selectedMonster)
@@ -58,7 +58,7 @@ class GameBoard extends Component {
     const oneTile = possibleTiles[originTile - 1][originTile][0][1]
     const twoTiles = possibleTiles[originTile - 1][originTile][1][2]
     const threeTiles = possibleTiles[originTile - 1][originTile][2][3]
-    
+
     if (monster.evo_level === 1) {
       return oneTile.concat(twoTiles).concat(threeTiles)
     }
@@ -90,7 +90,7 @@ class GameBoard extends Component {
       return monster.id === monsterId
     })
 
-    return monster ? true : false 
+    return monster ? true : false
   }
 
   attackValid = (attackingId, targetId) => {
@@ -121,7 +121,7 @@ class GameBoard extends Component {
       team = this.state.team1Roster
       rosterName = 'team1Roster'
     } else if (target.team === 2) {
-      team = this.state.team2Roster 
+      team = this.state.team2Roster
       rosterName = 'team2Roster'
     }
 
@@ -160,13 +160,13 @@ class GameBoard extends Component {
   }
 
   decideClickAction = (tileId, monsterId) => {
-    // If there's a selected monster already, and I click on 
+    // If there's a selected monster already, and I click on
     // another monster on my team, switch the selection to
     // the new one I clicked on.
     if (monsterId && this.state.selectedMonster && this.onCurrentTeam(monsterId)) {
       this.selectMonster(monsterId, tileId)
     }
-    
+
     // If there's a selected monster already, attack the one I clicked on.
     if (monsterId && this.state.selectedMonster && !this.onCurrentTeam(monsterId)) {
       const valid = this.attackValid(this.state.selectedMonster, monsterId)
@@ -310,10 +310,10 @@ class GameBoard extends Component {
     let team, opposing = []
 
     if (teamId === 1) {
-      team = this.state.team1Roster 
+      team = this.state.team1Roster
       opposing = this.state.team2Roster
     } else {
-      team = this.state.team2Roster 
+      team = this.state.team2Roster
       opposing = this.state.team1Roster
     }
 
@@ -335,7 +335,7 @@ class GameBoard extends Component {
     const player = this.state.currentTurn === 1 ? 1 : this.state.currentTurn === 2 ? 2 : null
     const enemyTiles = this.getAllSurroundingEnemies(player)
     if (enemyTiles.length > 0) {
-      return true 
+      return true
     }
     return false
   }
