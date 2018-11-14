@@ -10,9 +10,11 @@ class TeamSelector extends React.Component {
   }
 
   makeTeamLists = () => {
+    if (!this.props.monsters || !this.props.teams) { return null }
+
     return this.props.teams.map( team => {
       const monsters = this.props.findTeamMonsters(team.id)
-      const listItems = monsters.map(monster => {
+      const listItems = monsters.map( monster => {
         return (
           <img src={monster.sprite_front} alt="" />
         )
@@ -37,7 +39,7 @@ class TeamSelector extends React.Component {
 
   render() {
     let header = ''
-    if (this.state.team1 === null) {
+    if (this.props.team1 === null) {
       header = "Player 1"
     } else {
       header = "Player 2"

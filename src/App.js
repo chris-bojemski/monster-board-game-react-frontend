@@ -11,6 +11,7 @@ class App extends Component {
       panel: 'gameInstance',
       monsters: null,
       attacks: null,
+      teams: null,
       team1: null,
       team2: null,
       team1Roster: null,
@@ -74,7 +75,7 @@ class App extends Component {
   }
   
   render() {
-    const showGame = this.state.panel === 'gameInstance'
+    const showGame = this.state.team1 && this.state.team2 ? true : false
     return (
       <Fragment>
         {showGame ?  <GameInstance 
