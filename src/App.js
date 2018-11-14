@@ -16,7 +16,7 @@ class App extends Component {
       team2: null,
       team1Roster: null,
       team2Roster: null,
-      assignments: null,
+      assignments: [],
     }
   }
 
