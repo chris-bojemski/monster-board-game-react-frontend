@@ -93,6 +93,47 @@ class GameBoard extends Component {
     return monster ? true : false 
   }
 
+  attackValid = (attackingId, targetId) => {
+    const attacking = this.findMonsterInTeams(attackingId)
+    const target = this.findMonsterInTeams(targetId)
+
+    if (!this.withinOneTile(attacking.tile, target.tile)) {
+      return false
+    }
+
+    if (this.props.stage !== 'attack') {
+      console.log("Not in attack phase.")
+      return false
+    }
+
+    return true
+  }
+
+  executeAttack = (attackingId, targetId) => {
+    const attacking = this.findMonsterInTeams(attackingId)
+    const target = this.findMonsterInTeams(targetId)
+
+    target.hp -= attacking.power
+
+    let team = []
+    let rosterName = ''
+    if (target.team === 1) {
+      team = this.state.team1Roster
+      rosterName = 'team1Roster'
+    } else if (target.team === 2) {
+      team = this.state.team2Roster 
+      rosterName = 'team2Roster'
+    }
+
+    team = team.map( monster => {
+      return monster.id === target.id ? target : monster
+    })
+
+    const obj = {rosterName: team}
+
+    this.setState(obj, this.props.advanceStage())
+  }
+
   decideClickAction = (tileId, monsterId) => {
     // If there's a selected monster already, and I click on 
     // another monster on my team, switch the selection to
@@ -102,7 +143,12 @@ class GameBoard extends Component {
     }
     
     // If there's a selected monster already, attack the one I clicked on.
-    // Code not written yet.
+    if (monsterId && this.state.selectedMonster && !this.onCurrentTeam(monsterId)) {
+      const valid = this.attackValid(this.state.selectedMonster, monsterId)
+      if (valid) {
+        this.executeAttack(this.state.selectedMonster, monsterId)
+      }
+    }
 
     // If there's no selected monster, select it.
     if (!this.state.selectedMonster) {
