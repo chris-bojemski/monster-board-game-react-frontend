@@ -64,24 +64,24 @@ class GameInstance extends React.Component {
     const turn = this.state.currentTurn
     const player = turn === 1 ? "Player 1, " : turn === 2 ? "Player 2, " : ''
     if (!this.state.p1Turn || !this.state.p2Turn) {
-      return "Roll to see who goes first."
+      return "Roll to see who goes first!"
     }
 
     const phase = this.state.stage
     if (phase === 'rollMove') {
-      return `${player}roll to see how far a Pokémon can move.`
+      return `${player}roll to see how far you can move your Pokémon!`
     }
 
     if (phase === 'rollAttack') {
-      return `${player}roll to see how hard your attack will hit.`
+      return `${player}roll for damage against neighboring Pokémon!`
     }
 
     if (phase === 'move') {
-      return `${player}move a monster.`
+      return `${player}move one of your Pokémon!`
     }
 
     if (phase === 'attack') {
-      return `${player}ATTACK!.`
+      return `${player}ATTACK!`
     }
 
     return ''
