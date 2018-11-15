@@ -128,11 +128,43 @@ class GameBoard extends Component {
     return true
   }
 
+  getCurrentPlayerStats = () => {
+    const stats = {}
+    if (this.props.currentTurn === 1) {
+      stats.move = this.props.p1Move
+      stats.turn = this.props.p1Turn
+      stats.attack = this.props.p1Attack
+    } else if (this.props.currentTurn === 2) {
+      stats.turn = this.props.p2Turn
+      stats.move = this.props.p2Move
+      stats.attack = this.props.p2Attack
+    }
+    return stats
+  }
+
+  getAttackMultiplier = (attackRoll, monsterPower) => {
+    if (attackRoll === 1) {
+      return Math.floor(monsterPower * 0.05)
+    } else if (attackRoll > 1 && attackRoll < 4) {
+      return Math.floor(monsterPower * 0.15)
+    } else if (attackRoll > 3 && attackRoll < 6) {
+      return Math.floor(monsterPower * 0.25)
+    } else if (attackRoll === 6) {
+      return Math.floor(monsterPower * 0.6)
+    }
+  }
+
   executeAttack = (attackingId, targetId) => {
     const attacking = this.findMonsterInTeams(attackingId)
     const target = this.findMonsterInTeams(targetId)
 
-    target.hp -= attacking.power
+    const stats = this.getCurrentPlayerStats()
+    console.log(stats)
+    const damage = this.getAttackMultiplier(stats.attack, attacking.power)
+
+    console.log(damage)
+
+    target.hp -= damage
 
     let team = []
     let rosterName = ''
