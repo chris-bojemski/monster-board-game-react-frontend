@@ -36,6 +36,8 @@ class TeamSelector extends React.Component {
             {listItems}
             <br />
           </div>
+          <div className="cardHeader">
+          </div>
         </div>
       )
     })
@@ -52,15 +54,18 @@ class TeamSelector extends React.Component {
     return (
       <React.Fragment>
         <div>
+          <br />
           <div className="selectScreenHeader">
             <h1>{header}, Select Your Team!</h1>
           </div>
           <br />
           <br />
           <br />
+          <br />
           <div className="content">
             {this.makeTeamLists()}
           </div>
+          <br />
         </div>
       </React.Fragment>
     )
