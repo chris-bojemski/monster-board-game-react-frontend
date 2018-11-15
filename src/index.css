@@ -1,7 +1,4 @@
 body {
-  /* margin-left: 80px;
-  margin-right: 80px; */
-  /* padding-top: 3.5%; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -43,11 +40,6 @@ code {
 .diceHeader {
   padding-top: 10px;
   padding-left: 3px;
-  /* text-shadow:
-   -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000; */
 }
 
 .gamePhase {
@@ -64,9 +56,7 @@ code {
   color: white;
   padding-right: 4px;
   border-radius: 10px;
-  /* background-color: #ECECEC; */
   background-color: rgba(0,0,0,0.5);
-  /* box-shadow: 0px 10px 20px rgba(0,0,0,0.2); */
 }
 
 .playerTwoDiceTray {
@@ -80,8 +70,6 @@ code {
   color: white;
   border-radius: 10px;
   background-color: rgba(0,0,0,0.5);
-  /* background-color: #ECECEC; */
-  /* box-shadow: 0px 10px 20px rgba(0,0,0,0.2); */
 }
 
 #hexGrid {
@@ -97,10 +85,6 @@ code {
   padding-left: 1%;
   padding-right: 1%;
   max-width: 100%;
-  /* box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.75); */
-  /* border-radius: 10px; */
-  /* background-image: url(https://i.imgur.com/WnLR74C.jpg); */
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .board {
@@ -117,15 +101,6 @@ code {
   margin-right: auto;
 }
 
-.gameContainer{
-  /* background: rgb(76,	146,	76); */
-  /* float: left; */
-}
-
-.playArea {
-  /* display: block; */
-}
-
 .changeScreens{
   padding-top: 25px;
   margin: auto;
@@ -135,8 +110,6 @@ code {
 .hex {
   position: relative;
   visibility:hidden;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-  /* outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
 }
 .hex::after{
   content:'';
@@ -150,7 +123,6 @@ code {
   margin:0 2%;
   overflow: hidden;
   visibility: hidden;
-  /* outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
   -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
       -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
           transform: rotate3d(0,0,1,-60deg) skewY(30deg);
@@ -158,7 +130,6 @@ code {
 .hexIn * {
   position: absolute;
   visibility: visible;
-  /* outline:1px solid black; /* fix for jagged edges in FF on hover transition */
 }
 .hexLink {
     display:block;
@@ -167,9 +138,6 @@ code {
     text-align: center;
     color: #fff;
     overflow: hidden;
-    /* opacity: .92; */
-    /* outline: 1px solid black; */
-    /* box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.6); */
     -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
         -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
             transform: skewY(-30deg) rotate3d(0,0,1,60deg);
@@ -253,22 +221,17 @@ code {
   height: 90%;
   margin: 0 auto;
   z-index: 1000;
-  /* for flipping sprite */
-  /* -webkit-transform: scaleX(-1);
-    transform: scaleX(-1); */
 }
 
 .sprite-right{
   left: -100%;
   right: -100%;
-  /* transform: translateY(-78%) translateX(2.5%); */
   width: 90%;
   height: 90%;
   margin: 0 auto;
   z-index: 1000;
-  /* for flipping sprite */
   -webkit-transform: scaleX(-1);
-    transform: scaleX(-1) translateY(5%) translateX(1%);
+  transform: scaleX(-1) translateY(5%) translateX(1%);
 }
 
 .hoverCard{
@@ -279,14 +242,7 @@ code {
   max-height: 100px;
   margin: 0 auto;
   border-radius: 10px;
-  /* background-color: #ECECEC; */
   background-color: rgba(0,0,0,0.5);
-  /* box-shadow: 0px 10px 20px rgba(0,0,0,0.2); */
   text-align:center;
   color: rgb(255, 255, 255);
-  /* text-shadow:
-   -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000; */
 }
