@@ -30,9 +30,7 @@ class App extends Component {
   componentDidMount() {
     fetch(this.monstersURL)
     .then(r=>r.json())
-    .then(monsters=>this.setState({ monsters }), this.setState({
-      gameWonBy: [1, this.findTeamMonsters(1)]
-    }))
+    .then(monsters=>this.setState({ monsters }))
 
     fetch(this.attacksURL)
     .then(r=>r.json())
@@ -120,6 +118,7 @@ class App extends Component {
       <GameOver
         wonBy={this.state.gameWonBy[0]}
         team={this.state.gameWonBy[1]}
+        selectTeam={this.selectTeam}
       />
         :
       null}

@@ -270,7 +270,7 @@ code {
 
 .game-over-container{
   position: fixed;
-  top: 50%;
+  top: 60%;
   left: 50%;
   max-width: 100%;
   /* bring your own prefixes */
@@ -282,4 +282,24 @@ code {
 
 .winner{
   max-width: 100%;
+}
+
+.startNewGame{
+  text-align: center;
+  padding: 0.5%;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  z-index: 2000;
+  max-width: 400px;
+  max-height: 100px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.5);
+  text-align:center;
+  color: rgb(255, 255, 255);
+}
+
+.startNewGame:hover {
+  cursor: pointer;
+  background-color: rgb(204, 255, 204, 0.6);
 }
