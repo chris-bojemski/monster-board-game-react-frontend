@@ -393,6 +393,8 @@ class GameBoard extends Component {
 
   checkWin = () => {
     if (this.state.team1Roster.length === 0 || this.state.team2Roster.length === 0) {
+      const winner = this.state.team1Roster.length === 0 ? 2 : 1
+      this.props.setWin(winner)
       return true
     }
 

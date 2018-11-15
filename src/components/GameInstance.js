@@ -231,6 +231,7 @@ class GameInstance extends React.Component {
               p2Attack={this.state.p2Attack}
               currentTurn={this.state.currentTurn}
               setStage={this.setStage}
+              setWin={this.props.setWin}
             />
           </div>
           <PlayerDiceContainer 

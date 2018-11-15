@@ -79,8 +79,19 @@ class App extends Component {
     }
   }
 
-  setWin = (playerId, teamId) => {
-    this.setState({ gameWonBy: [playerId, this.findTeamMonsters(teamId)] })
+  setWin = (playerId) => {
+    this.setState({ gameWonBy: playerId })
+  }
+
+  wipeGame = () => {
+    this.setState({
+      panel: 'gameInstance',
+      team1: null,
+      team2: null,
+      team1Roster: null,
+      team2Roster: null,
+      gameWonBy: null
+    })
   }
 
   render() {
@@ -100,6 +111,7 @@ class App extends Component {
           team1Roster={this.state.team1Roster}
           team2Roster={this.state.team2Roster}
           findTeamMonsters={this.findTeamMonsters}
+          setWin={this.setWin}
         />
       : !showGame && !this.state.gameWonBy ? <TeamSelector
           monsters={this.state.monsters}
@@ -116,9 +128,9 @@ class App extends Component {
       {this.state.gameWonBy
         ?
       <GameOver
-        wonBy={this.state.gameWonBy[0]}
-        team={this.state.gameWonBy[1]}
+        wonBy={this.state.gameWonBy}
         selectTeam={this.selectTeam}
+        wipeGame={this.wipeGame}
       />
         :
       null}
