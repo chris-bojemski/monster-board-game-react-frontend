@@ -11,7 +11,7 @@ class GameBoard extends Component {
       tileCount: 57,
       id: 0,
       groundTiles: [
-        'https://i.imgur.com/bq89X0b.jpg', 
+        'https://i.imgur.com/bq89X0b.jpg',
         'https://i.imgur.com/ZcMpVxD.jpg',
         'https://i.imgur.com/Dq9uhFl.jpg',
         'https://i.imgur.com/fwcDwSX.jpg',
@@ -184,7 +184,7 @@ class GameBoard extends Component {
 
     this.setState(obj)
   }
-  
+
   cleanBoard = () => {
     const dead = []
     this.state.team1Roster.forEach( monster => {
@@ -428,7 +428,7 @@ class GameBoard extends Component {
     if (this.props.stage === 'checkWin') {
       if (this.checkWin()) {
         console.log('PLAYER WINS')
-        return 
+        return
       }
 
       this.props.advanceStage()

@@ -8,7 +8,7 @@ const PlayerTwoDiceContainer = (props) => {
 
   return (
     <div className="playerTwoDiceTray">
-      <h2 className="diceHeader">Player 1</h2>
+      <h2 className="diceHeader">Player 2</h2>
       <br />
       <ReactDice
         key="playerTwoDiceTray"
