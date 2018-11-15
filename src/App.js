@@ -3,7 +3,6 @@ import './App.css';
 import GameInstance from './components/GameInstance'
 import TeamSelector from './components/TeamSelector'
 import BackgroundVideo from './components/BackgroundVideo'
-// require('./background.mp4')
 
 class App extends Component {
   constructor(props) {

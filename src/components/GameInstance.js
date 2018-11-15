@@ -1,7 +1,6 @@
 import React from 'react'
 import GameBoard from './GameBoard';
-import PlayerOneDiceContainer from './PlayerOneDiceContainer';
-import PlayerTwoDiceContainer from './PlayerTwoDiceContainer';
+import PlayerDiceContainer from './PlayerDiceContainer';
 
 class GameInstance extends React.Component {
   constructor(props) {
@@ -204,10 +203,10 @@ class GameInstance extends React.Component {
     return (
       <div className="App">
         <div className="playArea">
-          <PlayerOneDiceContainer
+          <PlayerDiceContainer 
             diceValueMultiplexer={this.diceValueMultiplexer}
-            gameTurn={this.state.stage}
             currentTurn={{turn: this.state.p1Turn, move: this.state.p1Move, attack: this.state.p1Attack}}
+            playerId={1}
           />
           <div className="gameContainer">
             <GameBoard
@@ -234,10 +233,10 @@ class GameInstance extends React.Component {
               setStage={this.setStage}
             />
           </div>
-          <PlayerTwoDiceContainer
+          <PlayerDiceContainer 
             diceValueMultiplexer={this.diceValueMultiplexer}
-            gameTurn={this.state.stage}
             currentTurn={{turn: this.state.p2Turn, move: this.state.p2Move, attack: this.state.p2Attack}}
+            playerId={2}
           />
         </div>
         <br />
