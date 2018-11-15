@@ -207,6 +207,7 @@ class GameInstance extends React.Component {
           <PlayerOneDiceContainer
             diceValueMultiplexer={this.diceValueMultiplexer}
             gameTurn={this.state.stage}
+            currentTurn={{turn: this.state.p1Turn, move: this.state.p1Move, attack: this.state.p1Attack}}
           />
           <div className="gameContainer">
             <GameBoard
@@ -236,6 +237,7 @@ class GameInstance extends React.Component {
           <PlayerTwoDiceContainer
             diceValueMultiplexer={this.diceValueMultiplexer}
             gameTurn={this.state.stage}
+            currentTurn={{turn: this.state.p2Turn, move: this.state.p2Move, attack: this.state.p2Attack}}
           />
         </div>
         <br />
