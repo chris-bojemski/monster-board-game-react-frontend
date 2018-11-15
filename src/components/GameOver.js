@@ -13,7 +13,9 @@ const GameOver = props => {
       <br />
       <br />
       <div className="startNewGame" onClick={props.wipeGame}>
-        <h1>Click to play again!</h1>
+        <h3>A game made by</h3>
+        <h1><a href="https://github.com/astrosquid">Chris Bojemski</a> & <a href="http://www.murderpunch.com/blog">Sebastian Karolkiewicz</a></h1>
+        <h2>Click to play again!</h2>
       </div>
     </div>
   )

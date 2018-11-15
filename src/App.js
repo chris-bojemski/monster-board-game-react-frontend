@@ -101,7 +101,15 @@ class App extends Component {
       <div className="fullscreen-bg">
         <BackgroundVideo />
       </div>
-      <img className="logo" src="https://i.imgur.com/IIxo52q.png" alt=""/>
+      <a
+        href="https://github.com/astrosquid/monster-board-game-react-frontend"
+      >
+        <img 
+          className="logo" 
+          src="https://i.imgur.com/IIxo52q.png" 
+          alt="logo"
+        />
+      </a>
       {showGame && !this.state.gameWonBy ?  <GameInstance
           monsters={this.state.monsters}
           attacks={this.state.attacks}
