@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import GameInstance from './components/GameInstance'
 import TeamSelector from './components/TeamSelector'
+import GameOver from './components/GameOver'
 import BackgroundVideo from './components/BackgroundVideo'
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
       team1Roster: null,
       team2Roster: null,
       assignments: [],
+      gameWonBy: null
     }
   }
 
@@ -28,7 +30,9 @@ class App extends Component {
   componentDidMount() {
     fetch(this.monstersURL)
     .then(r=>r.json())
-    .then(monsters=>this.setState({ monsters }))
+    .then(monsters=>this.setState({ monsters }), this.setState({
+      gameWonBy: [1, this.findTeamMonsters(1)]
+    }))
 
     fetch(this.attacksURL)
     .then(r=>r.json())
@@ -54,6 +58,9 @@ class App extends Component {
   }
 
   findTeamMonsters = teamId => {
+    if (!this.state.teams) {
+      return []
+    }
     const team = this.state.teams.find( team => {
       return team.id === teamId
     })
@@ -74,6 +81,10 @@ class App extends Component {
     }
   }
 
+  setWin = (playerId, teamId) => {
+    this.setState({ gameWonBy: [playerId, this.findTeamMonsters(teamId)] })
+  }
+
   render() {
     const showGame = this.state.team1 && this.state.team2 ? true : false
     return (
@@ -82,7 +93,7 @@ class App extends Component {
         <BackgroundVideo />
       </div>
       <img className="logo" src="https://i.imgur.com/IIxo52q.png" alt=""/>
-      {showGame ?  <GameInstance
+      {showGame && !this.state.gameWonBy ?  <GameInstance
           monsters={this.state.monsters}
           attacks={this.state.attacks}
           findMonster={this.findMonster}
@@ -92,7 +103,7 @@ class App extends Component {
           team2Roster={this.state.team2Roster}
           findTeamMonsters={this.findTeamMonsters}
         />
-      : <TeamSelector
+      : !showGame && !this.state.gameWonBy ? <TeamSelector
           monsters={this.state.monsters}
           attacks={this.state.attacks}
           teams={this.state.teams}
@@ -102,23 +113,19 @@ class App extends Component {
           team1={this.state.team1}
           team2={this.state.team2}
           selectTeam={this.selectTeam}
-        />}
+        />
+      : null}
+      {this.state.gameWonBy 
+        ? 
+      <GameOver
+        wonBy={this.state.gameWonBy[0]}
+        team={this.state.gameWonBy[1]}
+      /> 
+        : 
+      null}
       </Fragment>
     );
   }
 }
-
-// <video className="fullscreen-bg__video" poster="./background_image.png" src="background.mp4" type="video/mp4" loop muted controls>
-// </video>
-
-// <div className="fullscreen-bg">
-//   <video className="fullscreen-bg__video" loop autoPlay>
-//     <source src="./background.mp4" type="video/mp4" />
-//     Your browser does not support the video tag.
-//   </video>
-// </div>
-
-// removed
-// <ViewButtons changePanel={this.changePanel}/>
 
 export default App;
