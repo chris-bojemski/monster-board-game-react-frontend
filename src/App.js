@@ -115,13 +115,13 @@ class App extends Component {
           selectTeam={this.selectTeam}
         />
       : null}
-      {this.state.gameWonBy 
-        ? 
+      {this.state.gameWonBy
+        ?
       <GameOver
         wonBy={this.state.gameWonBy[0]}
         team={this.state.gameWonBy[1]}
-      /> 
-        : 
+      />
+        :
       null}
       </Fragment>
     );

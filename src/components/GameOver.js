@@ -12,17 +12,20 @@ const GameOver = props => {
     })
   }
 
+  console.log(props.wonBy)
+
   return (
     <div className="game-over-container">
-      <h1>PLAYER {props.wonBy} WINS</h1>
+      {props.wonBy === 1 ? <img src="https://i.imgur.com/JFCqJur.png" alt="" className="winner"/> : <img src="https://i.imgur.com/CkSl5Kq.png" alt="" className="winner" />}
       <div>
-          <div className="cardHeader">
-          </div>
-          <div className="card">
-            {monsterItems()}
-            <br />
-          </div>
+        <div className="cardHeader">
         </div>
+        <div className="card">
+          {monsterItems()}
+          <br />
+          <h3>Click your team return to team selection!</h3>
+        </div>
+      </div>
     </div>
   )
 }
