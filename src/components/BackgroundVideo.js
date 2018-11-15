@@ -4,7 +4,7 @@ import VideoCover from 'react-video-cover';
 class BackgroundVideo extends Component {
   render() {
     const videoOptions = {
-      src: 'https://r2---sn-8xgp1vo-ab5l.googlevideo.com/videoplayback?ip=96.232.187.141&mime=video/mp4&pl=17&txp=2211222&mm=31,29&itag=22&ipbits=0&ms=au,rdu&mt=1542217470&mn=sn-8xgp1vo-ab5l,sn-ab5l6n6e&mv=m&initcwndbps=1343750&expire=1542239165&signature=68BB39D72AA7FC129D338D7EDC131C77EB8A4BA3.0BCA81195D8B85182F81FA0EAB86A532359145F1&key=yt6&id=o-AOoPyVqGEsi_yqg-pBD2vXdNU0ShHfqtv6yqb4N0u3O-&sparams=dur,ei,id,initcwndbps,ip,ipbits,itag,lmt,mime,mm,mn,ms,mv,pl,ratebypass,requiressl,source,expire&ratebypass=yes&requiressl=yes&lmt=1542217532470833&ei=XV_sW5OjJcW68gTqj6uICA&c=WEB&dur=3.111&source=youtube&fvip=2',
+      src: 'https://r8---sn-8xgp1vo-2iae.googlevideo.com/videoplayback?ei=_7bsW-j8D7Gihwbh0ZugBw&lmt=1542217532470833&pl=17&dur=3.111&ipbits=0&ip=96.232.187.141&expire=1542261599&mime=video/mp4&key=yt6&signature=375295FA37F74ADD11BBCE471F6CC00E8F886FA3.675D759DF9218C2DE457DED0D1AA6F3B102E83F7&sparams=dur,ei,id,initcwndbps,ip,ipbits,itag,lmt,mime,mm,mn,ms,mv,pl,ratebypass,requiressl,source,expire&initcwndbps=1640000&c=WEB&mm=31,29&mn=sn-8xgp1vo-2iae,sn-ab5sznly&id=o-AL7WtV4J20RbPiQ00KWraLleNx1sFm4CffaNcjZ9_tZL&fvip=2&requiressl=yes&mt=1542239872&ratebypass=yes&mv=m&ms=au,rdu&source=youtube&itag=22&txp=2211222',
       ref: videoRef => {
         this.videoRef = videoRef;
       },

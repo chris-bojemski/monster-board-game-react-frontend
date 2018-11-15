@@ -97,6 +97,8 @@ code {
   padding-left: 1%;
   padding-right: 1%;
   max-width: 100%;
+  background:rgba(0,0,0,0.5);
+  /* opacity: 0; */
   /* box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.75); */
   /* border-radius: 10px; */
   /* background-image: url(https://i.imgur.com/WnLR74C.jpg); */
@@ -158,6 +160,8 @@ code {
 .hexIn * {
   position: absolute;
   visibility: visible;
+  box-sizing:border-box;
+  /* background-color: rgba(0,0,0,0.3); */
   /* outline:1px solid black; /* fix for jagged edges in FF on hover transition */
 }
 .hexLink {
@@ -253,6 +257,10 @@ code {
   height: 90%;
   margin: 0 auto;
   z-index: 1000;
+  -webkit-filter: drop-shadow(1px 1px 0 black)
+                  drop-shadow(-1px -1px 0 black);
+  filter: drop-shadow(1px 1px 0 black)
+          drop-shadow(-1px -1px 0 black);
   /* for flipping sprite */
   /* -webkit-transform: scaleX(-1);
     transform: scaleX(-1); */
@@ -266,6 +274,10 @@ code {
   height: 90%;
   margin: 0 auto;
   z-index: 1000;
+  -webkit-filter: drop-shadow(1px 1px 0 black)
+                  drop-shadow(-1px -1px 0 black);
+  filter: drop-shadow(1px 1px 0 black)
+          drop-shadow(-1px -1px 0 black);
   /* for flipping sprite */
   -webkit-transform: scaleX(-1);
     transform: scaleX(-1) translateY(5%) translateX(1%);
