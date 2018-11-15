@@ -430,7 +430,7 @@ class GameBoard extends Component {
     if (this.props.stage === 'checkWin') {
       if (this.checkWin()) {
         console.log('PLAYER WINS')
-        return
+        return null
       }
 
       this.props.advanceStage()
