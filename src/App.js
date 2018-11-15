@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import './App.css';
 import GameInstance from './components/GameInstance'
-import ViewButtons from './components/ViewButtons'
 import TeamSelector from './components/TeamSelector'
-import VideoCover from 'react-video-cover'
 import BackgroundVideo from './components/BackgroundVideo'
 // require('./background.mp4')
 

@@ -19,7 +19,7 @@ class PlayerOneDiceContainer extends React.Component {
   }
 
   updateState = () => {
-    this.state.dices.map( dice => {
+    this.state.dices.forEach( dice => {
       if (dice.type === this.state.resultType) {
         this.setState({
           value: this.state.resultValue

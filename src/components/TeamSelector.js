@@ -20,7 +20,7 @@ class TeamSelector extends React.Component {
       const monsters = this.props.findTeamMonsters(team.id)
       const listItems = monsters.map( monster => {
         return (
-          <div className="teamCard">
+          <div className="teamCard" key={monster.name}>
             <img src={monster.sprite_front} alt="" />
             <h2>{this.capitalizeName(monster.name)}</h2>
           </div>
@@ -28,7 +28,7 @@ class TeamSelector extends React.Component {
       })
 
       return (
-        <div>
+        <div key={team.name}>
           <div className="cardHeader">
           </div>
           <div className="card" onClick={() => this.props.selectTeam(team.id)}>
@@ -48,6 +48,7 @@ class TeamSelector extends React.Component {
     } else {
       header = "Player 2"
     }
+
     return (
       <React.Fragment>
         <div>
