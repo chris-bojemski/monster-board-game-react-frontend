@@ -11,7 +11,8 @@ class GameBoard extends Component {
       tileCount: 57,
       id: 0,
       groundTiles: [
-        'https://i.imgur.com/bq89X0b.jpg', 'https://i.imgur.com/ZcMpVxD.jpg',
+        'https://i.imgur.com/bq89X0b.jpg', 
+        'https://i.imgur.com/ZcMpVxD.jpg',
         'https://i.imgur.com/Dq9uhFl.jpg',
         'https://i.imgur.com/fwcDwSX.jpg',
         'https://i.imgur.com/wgV8O4l.jpg',
@@ -30,6 +31,7 @@ class GameBoard extends Component {
         'https://i.imgur.com/gGEBhhd.jpg',
         'https://i.imgur.com/JsDCJFb.jpg',
       ],
+      tileBg: [],
       selectedMonster: 0,
       fromTile: 0,
       toTile: 0,
@@ -51,9 +53,7 @@ class GameBoard extends Component {
 
     const monster = this.findMonsterInTeams(selectedMonster)
     if (monster.team === this.props.currentTurn) {
-      this.setState({ selectedMonster, fromTile }, () => {
-        // this.highlightBoard()
-      })
+      this.setState({ selectedMonster, fromTile })
     }
   }
 
@@ -278,7 +278,7 @@ class GameBoard extends Component {
         <HexTile
           key={i}
           id={i}
-          image={this.state.groundTiles[Math.floor(Math.random() * this.state.groundTiles.length)]}
+          image={this.state.tileBg[i]}
           monsterId={ this.props.monsters && monsterHere ? monsterHere.id : null }
           direction={ monsterHere && monsterHere.team === 1 ? 'right' : 'left' }
           selectMonster={this.selectMonster}
@@ -365,6 +365,18 @@ class GameBoard extends Component {
     }
 
     return false
+  }
+
+  randomizeTiles = () => {
+    const tileBg = {}
+    for (let i = 1; i <= 57; i++) {
+      tileBg[i] = this.state.groundTiles[Math.floor(Math.random() * this.state.groundTiles.length)]
+    }
+    this.setState({ tileBg })
+  }
+
+  componentDidMount() {
+    this.randomizeTiles()
   }
 
   render() {
